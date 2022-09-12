@@ -4,32 +4,25 @@ import s from './Navigation.module.scss';
 
 const Navigation = ({ localization }) => {
   const { menuHome, menuContacts } = localization.localizedContent;
+  const setActive = ({ isActive }) => (isActive ? s.navLinkActive : s.navLink);
+  const isLoggedIn = true; // тимчасово
+
   return (
     <nav className={s.navigation}>
       <ul className={s.navList}>
         <li className={s.navListItem}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => {
-              return isActive ? s.navLinkActive : s.navLink;
-            }}
-          >
+          <NavLink to="/" className={setActive}>
             {menuHome}
           </NavLink>
         </li>
 
-        {/* {isLoggedIn && ( */}
-        <li className={s.navListItem}>
-          <NavLink
-            to="/contacts"
-            className={({ isActive }) => {
-              return isActive ? s.navLinkActive : s.navLink;
-            }}
-          >
-            {menuContacts}
-          </NavLink>
-        </li>
-        {/* )} */}
+        {isLoggedIn && (
+          <li className={s.navListItem}>
+            <NavLink to="/contacts" className={setActive}>
+              {menuContacts}
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );

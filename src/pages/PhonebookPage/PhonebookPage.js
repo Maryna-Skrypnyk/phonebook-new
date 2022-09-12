@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Title from '../../components/Title';
 import withLocalization from '../../components/hoc/withLocalization';
+import PageWrapper from '../../components/PageWrapper';
 import { AnimatePresence } from 'framer-motion';
 // import ContactForm from './ContactForm';
 import FormFormic from '../../components/FormFormic';
@@ -116,7 +117,7 @@ const PhonebookPage = ({ localization }) => {
   }, [contacts, filter]);
 
   return (
-    <>
+    <PageWrapper>
       <Title primaryTitle={primaryTitle} titleClass="primaryTitle" />
       <ButtonIconWithContent
         onClick={toggleModal}
@@ -146,7 +147,7 @@ const PhonebookPage = ({ localization }) => {
         contacts={getVisibleContactsSortByName}
         onDeleteContact={deleteContact}
       />
-    </>
+    </PageWrapper>
   );
 };
 

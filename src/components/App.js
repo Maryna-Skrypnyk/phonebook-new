@@ -1,8 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LocalizationContext from '../context/localization';
+import PrivateRoute from './hoc/routes/PrivateRoute';
+import PublicRoute from './hoc/routes/PublicRoute';
 import Layout from './Layout';
 import Container from './Container';
 import AppBar from './AppBar';
+import Footer from './Footer';
 import ScrollUp from './ScrollUp';
 import HomePage from '../pages/HomePage';
 import PhonebookPage from '../pages/PhonebookPage';
@@ -18,11 +21,46 @@ const App = () => {
           <ScrollUp />
 
           <Routes>
-            <Route index element={<HomePage />} />
+            <Route
+              index
+              element={
+                <PublicRoute>
+                  <HomePage />
+                </PublicRoute>
+              }
+            />
+
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <HomePage />
+                </PublicRoute>
+              }
+            />
+
+            <Route
+              path="signin"
+              element={
+                <PublicRoute>
+                  <HomePage />
+                </PublicRoute>
+              }
+            />
+
             {/* <Route path="home" element={<HomePage />} /> */}
-            <Route path="contacts" element={<PhonebookPage />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <PhonebookPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+
+          <Footer />
 
           <ToastContainer />
         </Container>

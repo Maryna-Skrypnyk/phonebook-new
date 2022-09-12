@@ -1,5 +1,6 @@
 import React from 'react';
 import withLocalization from '../../components/hoc/withLocalization';
+import PageWrapper from '../../components/PageWrapper';
 import Title from '../../components/Title';
 import phonebookIcon from '../../images/phone-book.svg';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,12 +15,12 @@ const HomePage = ({ localization }) => {
     logIn,
     appAction,
     actionPress,
-    logOut,
-    outAppAction,
+    // logOut,
+    // outAppAction,
   } = localization.localizedContent;
 
   return (
-    <div className={s.homePage}>
+    <PageWrapper>
       <Title primaryTitle={greeting} titleClass="titleGreeting">
         {' '}
         <span role="img" aria-label="Greeting icon">
@@ -58,7 +59,7 @@ const HomePage = ({ localization }) => {
           className={s.phoneIcon}
         />
       </AnimatePresence>
-    </div>
+    </PageWrapper>
   );
 };
 
