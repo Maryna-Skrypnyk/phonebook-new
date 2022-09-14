@@ -6,9 +6,9 @@ const ScrollToUp = () => {
     <div>
       <div style={{ marginTop: '2px' }} />
       <ScrollToTop
-        // style={{ backgroundColor: '#52b2fc' }}
+        style={{ backgroundColor: '#52b2fc' }}
         className={s.ScrollToUp}
-        // color="#ffffff"
+        color="#ffffff"
         smooth
       />
     </div>
