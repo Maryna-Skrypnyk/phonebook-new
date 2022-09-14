@@ -6,7 +6,7 @@ const ScrollToUp = () => {
     <div>
       <div />
       <ScrollToTop
-        style={{ backgroundColor: '#52b2fc' }}
+        // style={{ backgroundColor: '#52b2fc' }}
         className={s.scrollToUp}
         color="#ffffff"
         smooth
