@@ -7,21 +7,23 @@ const Navigation = ({ localization }) => {
   const setActive = ({ isActive }) => (isActive ? s.navLinkActive : s.navLink);
   const isLoggedIn = true; // тимчасово
 
+  const navItems = [
+    { href: '/', text: menuHome, loginStatus: true },
+    { href: 'contacts', text: menuContacts, loginStatus: isLoggedIn },
+  ];
+
   return (
     <nav className={s.navigation}>
       <ul className={s.navList}>
-        <li className={s.navListItem}>
-          <NavLink to="/" className={setActive}>
-            {menuHome}
-          </NavLink>
-        </li>
-
-        {isLoggedIn && (
-          <li className={s.navListItem}>
-            <NavLink to="/contacts" className={setActive}>
-              {menuContacts}
-            </NavLink>
-          </li>
+        {navItems.map(
+          ({ href, text, loginStatus }) =>
+            loginStatus && (
+              <li className={s.navListItem}>
+                <NavLink to={href} key={href} className={setActive}>
+                  {text}
+                </NavLink>
+              </li>
+            ),
         )}
       </ul>
     </nav>
