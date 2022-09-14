@@ -1,0 +1,32 @@
+@import '../../../styles/index.scss';
+
+.SignupFormContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 10px;
+  margin: 0 auto 0;
+  min-width: 280px;
+
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(50px);
+  // background-color: $white-color;
+
+  @media screen and (min-width: $medium) {
+    padding: 36px 30px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    padding: 50px 40px;
+    border-radius: 20px;
+    width: 540px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin: 0;
+    padding: 50px 80px;
+  }
+}
+
+.LoginFormContainer {
+  composes: SignupFormContainer;
+}

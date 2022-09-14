@@ -1,0 +1,37 @@
+{
+  "greeting": "Ласкаво просимо до нашого веб-додатку",
+  "appTarget": "Використовуй програму, щоб створити власну телефонну книгу",
+  "outAppAction": "для виходу з додатку",
+  "appAction": "і користуйся всіма перевагами додатку",
+  "actionPress": "Натисни",
+  "primaryTitle": "Телефонна книга",
+  "secondaryTitle": "Контакти",
+
+  "contentBtnAdd": "Додати контакт",
+  "titleFilter": "Пошук контактів по імені",
+  "filterPlaceholder": "Введіть ім'я контакту",
+  "noContacts": "Відсутні контакти в списку",
+  "isContact": "вже існує у списку контактів",
+
+  "menuHome": "Головна",
+  "menuContacts": "Контакти",
+
+  "signUp": "Зареєструватись",
+  "logIn": "Ввійти",
+  "logOut": "Вийти",
+
+  "namePlaceholder": "Ім'я",
+  "phoneNumber": "Номер телефону",
+  "emailPlaceholder": "Електронна пошта",
+  "passwordPlaceholder": "Пароль",
+  "confirmPasswordPlaceholder": "Підтвердіть пароль",
+
+  "required": "поле обов'язкове",
+  "notSpaces": "не може включати пробіли напочатку та вкінці",
+  "minCharacterName": "не менше 2 символів",
+  "maxCharacterName": "не більше 12 символів",
+  "minCharacterNumber": "не менше 8 символів",
+  "maxCharacterNumber": "не більше 18 символів",
+  "notValid": "не валідне значення",
+  "notConfirmPassword": "пароль не підтверджено"
+}

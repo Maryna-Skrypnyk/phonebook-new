@@ -1,8 +1,6 @@
 import ButtonIcon from '../../ButtonIcon';
-// import { Delete } from '../../Icons/Delete';
 import { motion } from 'framer-motion';
-import { ReactComponent as DeleteIcon } from '../../../images/icons/delete2.svg';
-
+import { ReactComponent as DeleteIcon } from '../../../assets/images/icons/delete2.svg';
 import s from './ContactItem.module.scss';
 
 const ContactItem = ({ onDeleteContact, name, number }) => {

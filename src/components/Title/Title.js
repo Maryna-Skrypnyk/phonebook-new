@@ -6,14 +6,14 @@ const Title = ({ primaryTitle, secondaryTitle, titleClass, children }) => {
     <>
       {primaryTitle && (
         <h1 className={s[`${titleClass}`]}>
-          {primaryTitle}
           {children}
+          {primaryTitle}
         </h1>
       )}
       {secondaryTitle && (
         <h2 className={s[`${titleClass}`]}>
-          {secondaryTitle}
           {children}
+          {secondaryTitle}
         </h2>
       )}
     </>
@@ -23,12 +23,14 @@ const Title = ({ primaryTitle, secondaryTitle, titleClass, children }) => {
 Title.defaultProps = {
   primaryTitle: '',
   secondaryTitle: '',
+  titleClass: '',
   children: null,
 };
 
 Title.propTypes = {
   primaryTitle: PropTypes.string,
   secondaryTitle: PropTypes.string,
+  titleClass: PropTypes.string,
   children: PropTypes.node,
 };
 

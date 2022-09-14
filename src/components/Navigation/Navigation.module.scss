@@ -32,6 +32,10 @@
   font-weight: 700;
   @include transition(color);
 
+  &:hover {
+    color: $secondary-background-color;
+  }
+
   &::after {
     position: absolute;
     bottom: 16px;

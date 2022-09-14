@@ -1,0 +1,37 @@
+{
+  "greeting": "Welcome to our application",
+  "appTarget": "Use the app to create your own Phonebook",
+  "outAppAction": "to quit the app",
+  "appAction": "and use all the features of the app",
+  "actionPress": "Press",
+  "primaryTitle": "Phonebook",
+  "secondaryTitle": "Contacts",
+
+  "contentBtnAdd": "Add contact",
+  "titleFilter": "Find contacts by name",
+  "filterPlaceholder": "Enter contact name",
+  "noContacts": "There are no contacts in the list",
+  "isContact": "is already in contacts",
+
+  "menuHome": "Home",
+  "menuContacts": "Contacts",
+
+  "signUp": "Sign up",
+  "logIn": "Log in",
+  "logOut": "log out",
+
+  "namePlaceholder": "Name",
+  "phoneNumber": "Phone number",
+  "emailPlaceholder": "Email",
+  "passwordPlaceholder": "Password",
+  "confirmPasswordPlaceholder": "Confirm password",
+
+  "required": "field is required",
+  "notSpaces": "cannot include leading and trailing spaces",
+  "minCharacterName": "at least 2 character",
+  "maxCharacterName": "must be 12 characters or less",
+  "minCharacterNumber": "at least 8 character",
+  "maxCharacterNumber": "must be 18 characters or less",
+  "notValid": "not valid",
+  "notConfirmPassword": "passwords are not the same"
+}

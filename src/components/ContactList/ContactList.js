@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import ContactItem from './ContactItem';
 import withLocalization from '../hoc/withLocalization';
 import { motion, AnimatePresence } from 'framer-motion';
-
 import s from './ContactList.module.scss';
 
 const ContactList = ({ contacts, onDeleteContact, localization }) => {

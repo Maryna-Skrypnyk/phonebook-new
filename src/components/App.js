@@ -4,9 +4,11 @@ import PrivateRoute from './hoc/routes/PrivateRoute';
 import PublicRoute from './hoc/routes/PublicRoute';
 import Layout from './Layout';
 import AppLayout from './AppLayout';
-import ScrollUp from './ScrollUp';
 import HomePage from '../pages/HomePage';
 import PhonebookPage from '../pages/PhonebookPage';
+import RegistrationPage from '../pages/RegistrationPage';
+import LoginPage from '../pages/LoginPage';
+import ScrollToUp from './ScrollToUp';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,7 +16,7 @@ const App = () => {
   return (
     <Layout>
       <LocalizationContext>
-        <ScrollUp />
+        <ScrollToUp />
 
         <Routes>
           <Route path="/" element={<AppLayout />}>
@@ -28,19 +30,19 @@ const App = () => {
             />
 
             <Route
-              path="login"
+              path="signup"
               element={
                 <PublicRoute>
-                  <HomePage />
+                  <RegistrationPage />
                 </PublicRoute>
               }
             />
 
             <Route
-              path="signin"
+              path="login"
               element={
                 <PublicRoute>
-                  <HomePage />
+                  <LoginPage />
                 </PublicRoute>
               }
             />

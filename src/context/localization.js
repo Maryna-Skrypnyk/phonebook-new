@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react';
-import en from '../locales/en.json';
-import ua from '../locales/ua.json';
+import en from '../assets/locales/en.json';
+import ua from '../assets/locales/ua.json';
 
 const locales = { en, ua };
 

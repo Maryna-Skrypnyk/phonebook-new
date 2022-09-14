@@ -2,9 +2,8 @@ import React from 'react';
 import withLocalization from '../../components/hoc/withLocalization';
 import PageWrapper from '../../components/PageWrapper';
 import Title from '../../components/Title';
-import phonebookIcon from '../../images/phone-book.svg';
+import phonebookIcon from '../../assets/images/phone-book.svg';
 import { motion, AnimatePresence } from 'framer-motion';
-
 import s from './HomePage.module.scss';
 
 const HomePage = ({ localization }) => {

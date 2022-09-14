@@ -5,7 +5,7 @@ import withLocalization from '../../components/hoc/withLocalization';
 import PageWrapper from '../../components/PageWrapper';
 import { AnimatePresence } from 'framer-motion';
 // import ContactForm from './ContactForm';
-import FormFormic from '../../components/FormFormic';
+import FormContactAdd from '../../components/FormContactAdd';
 import Modal from '../../components/Modal';
 import ContactList from '../../components/ContactList';
 import Filter from '../../components/Filter';
@@ -13,12 +13,18 @@ import { v4 as uuidv4 } from 'uuid';
 import { makeToastWarn } from '../../components/Notification/notification';
 import ButtonIconWithContent from '../../components/ButtonIconWithContent';
 import ButtonIcon from '../../components/ButtonIcon';
-import { ReactComponent as AddIcon } from '../../images/icons/add.svg';
-import { ReactComponent as CloseIcon } from '../../images/icons/close.svg';
+import { ReactComponent as AddIcon } from '../../assets/images/icons/add.svg';
+import { ReactComponent as CloseIcon } from '../../assets/images/icons/close.svg';
 
 const PhonebookPage = ({ localization }) => {
-  const { isContact, phoneNumber, contactName, primaryTitle, secondaryTitle } =
-    localization.localizedContent;
+  const {
+    isContact,
+    phoneNumber,
+    namePlaceholder,
+    primaryTitle,
+    secondaryTitle,
+    contentBtnAdd,
+  } = localization.localizedContent;
   const [contacts, setContacts] = useLocalStorage('contacts', []);
   // const [filter, setFilter] = useState('');
   const [filter, setFilter] = useLocalStorage('filter', '');
@@ -36,7 +42,7 @@ const PhonebookPage = ({ localization }) => {
     };
 
     if (contacts.find(contact => contact.name === name)) {
-      makeToastWarn(`${contactName} "${name}" ${isContact}`, 'warn');
+      makeToastWarn(`${namePlaceholder} "${name}" ${isContact}`, 'warn');
       return;
     }
 
@@ -125,12 +131,13 @@ const PhonebookPage = ({ localization }) => {
         aria-label="Add contact"
       >
         <AddIcon width="30" height="30" fill="currentColor" />
+        {contentBtnAdd}
       </ButtonIconWithContent>
       <AnimatePresence>
         {showModal && (
           <Modal onClose={toggleModal}>
             {/* <ContactForm onSubmitForm={addContact} /> */}
-            <FormFormic onSubmitForm={addContact} />
+            <FormContactAdd onSubmitForm={addContact} />
             <ButtonIcon
               onClick={toggleModal}
               btnClass="btnCloseModal"

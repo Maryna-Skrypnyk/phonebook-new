@@ -1,0 +1,40 @@
+@import '../../../styles/index.scss';
+
+.Label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+
+  @media screen and (min-width: $tablet) {
+    padding-left: 8px;
+  }
+}
+
+.Label input {
+  width: 100%;
+  padding: 0;
+  margin-left: 8px;
+  background-color: transparent;
+
+  @media screen and (min-width: $tablet) {
+    margin: 0;
+    padding: 10px 20px;
+  }
+}
+
+.containerField {
+  position: relative;
+}
+
+.fieldError {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  color: tomato;
+  text-transform: lowercase;
+
+  @media screen and (min-width: $tablet) {
+    top: 14px;
+  }
+}

@@ -8,8 +8,8 @@ const Navigation = ({ localization }) => {
   const isLoggedIn = true; // тимчасово
 
   const navItems = [
-    { href: '/', text: menuHome, loginStatus: true },
-    { href: 'contacts', text: menuContacts, loginStatus: isLoggedIn },
+    { id: '1', href: '/', text: menuHome, loginStatus: true },
+    { id: '2', href: 'contacts', text: menuContacts, loginStatus: isLoggedIn },
   ];
 
   return (
@@ -18,8 +18,8 @@ const Navigation = ({ localization }) => {
         {navItems.map(
           ({ href, text, loginStatus }) =>
             loginStatus && (
-              <li className={s.navListItem}>
-                <NavLink to={href} key={href} className={setActive}>
+              <li key={href} className={s.navListItem}>
+                <NavLink to={href} className={setActive}>
                   {text}
                 </NavLink>
               </li>

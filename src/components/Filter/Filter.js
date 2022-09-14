@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import withLocalization from '../hoc/withLocalization';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
-
 import s from './Filter.module.scss';
 
 const Filter = ({ value, onChange, localization }) => {
   const filterInputId = uuidv4();
-  const { titleFilter, namePlaceholder } = localization.localizedContent;
+  const { titleFilter, filterPlaceholder } = localization.localizedContent;
 
   return (
     <motion.div
@@ -27,7 +26,7 @@ const Filter = ({ value, onChange, localization }) => {
         name="name"
         value={value}
         onChange={onChange}
-        placeholder={namePlaceholder}
+        placeholder={filterPlaceholder}
         className={s.input}
         initial={{ scale: 0 }}
         exit={{ scale: 0 }}

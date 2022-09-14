@@ -28,3 +28,17 @@
     font-size: 35px;
   }
 }
+
+.authHeading {
+  composes: secondaryTitle;
+
+  // font-size: 24px;
+  // font-weight: 700;
+  // font-family: $secondary-font;
+  margin: 0;
+  padding: 0;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 30px;
+  }
+}
