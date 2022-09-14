@@ -3,9 +3,7 @@ import LocalizationContext from '../context/localization';
 import PrivateRoute from './hoc/routes/PrivateRoute';
 import PublicRoute from './hoc/routes/PublicRoute';
 import Layout from './Layout';
-import Container from './Container';
-import AppBar from './AppBar';
-import Footer from './Footer';
+import AppLayout from './AppLayout';
 import ScrollUp from './ScrollUp';
 import HomePage from '../pages/HomePage';
 import PhonebookPage from '../pages/PhonebookPage';
@@ -16,11 +14,10 @@ const App = () => {
   return (
     <Layout>
       <LocalizationContext>
-        <AppBar />
-        <Container>
-          <ScrollUp />
+        <ScrollUp />
 
-          <Routes>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
             <Route
               index
               element={
@@ -58,12 +55,10 @@ const App = () => {
               }
             />
             <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          </Route>
+        </Routes>
 
-          <Footer />
-
-          <ToastContainer />
-        </Container>
+        <ToastContainer />
       </LocalizationContext>
     </Layout>
   );
