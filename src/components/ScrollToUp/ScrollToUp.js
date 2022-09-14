@@ -5,7 +5,12 @@ const ScrollToUp = () => {
   return (
     <div>
       <div />
-      <ScrollToTop className={s.scrollToUp} color="#ffffff" smooth />
+      <ScrollToTop
+        style={{ backgroundColor: '#52b2fc' }}
+        className={s.scrollToUp}
+        color="#ffffff"
+        smooth
+      />
     </div>
   );
 };
