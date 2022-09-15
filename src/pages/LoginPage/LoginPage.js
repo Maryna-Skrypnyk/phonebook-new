@@ -11,17 +11,18 @@ import routes from '../../assets/routes';
 import s from './LoginPage.module.scss';
 
 const RegistrationPage = ({ localization }) => {
-  const { primaryTitle, signUp } = localization.localizedContent;
+  const { logInPage, signUp, primaryTitle } = localization.localizedContent;
 
   return (
     <BgPageContainer>
       <ImgContentContainer>
         <SignupImgPage width={400} height={400} className={s.svgLoginImg} />
+        <Title secondaryTitle={primaryTitle} titleClass="autImgHeading" />
       </ImgContentContainer>
 
-      <AuthContentContainer authContainer="SignupFormContainer">
+      <AuthContentContainer authContainer="LoginFormContainer">
         <AuthHeading>
-          <Title primaryTitle={primaryTitle} titleClass="authHeading" />
+          <Title primaryTitle={logInPage} titleClass="authHeading" />
         </AuthHeading>
         <LoginForm />
         <AuthNav content={signUp} path={routes.signup} />

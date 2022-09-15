@@ -29,4 +29,8 @@
 
 .LoginFormContainer {
   composes: SignupFormContainer;
+
+  @media screen and (min-width: $desktop) {
+    padding: 80px;
+  }
 }

@@ -1,5 +1,4 @@
 // import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 // import authOperations from '../../../redux/auth/auth-operations';
 // import authSelectors from '../../../redux/auth/auth-selectors';
 import { Formik, Form } from 'formik';
@@ -26,7 +25,6 @@ const LoginForm = ({ localization }) => {
     maxCharacterNumber,
   } = localization.localizedContent;
   // const dispatch = useDispatch();
-  // const navigate = useNavigate();
   // const isLoading = true;
 
   const validationsSchema = Yup.object().shape({
@@ -39,17 +37,8 @@ const LoginForm = ({ localization }) => {
 
   const handleSubmit = ({ email, password }) => {
     // e.preventDefault();
-    // dispatch(
-    //   authOperations.register({
-    //     email,
-    //     password,
-    //     name,
-    //   }),
-    // );
-    // goToLoginPage();
+    // dispatch(authOperations.logIn({ email, password }));
   };
-
-  // const goToLoginPage = () => navigate('login', { replace: true });
 
   return (
     <Formik
@@ -81,6 +70,7 @@ const LoginForm = ({ localization }) => {
             className={s.Field}
             id="email"
           />
+
           <TextFieldForm
             label={
               <IconLock

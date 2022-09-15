@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import authOperations from '../../../redux/auth/auth-operations';
 // import authSelectors from '../../../redux/auth/auth-selectors';
 import { Formik, Form } from 'formik';
@@ -8,6 +8,7 @@ import withLocalization from '../../hoc/withLocalization';
 import PasswordStrenghtMeter from './PasswordStrenghtMeter';
 import TextFieldForm from '../TextFieldForm';
 import * as Yup from 'yup';
+import routes from '../../../assets/routes';
 // import Spinner from '../../Spinner';
 
 import ButtonIconWithContent from '../../ButtonIconWithContent';
@@ -19,6 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import s from './RegistrationForm.module.scss';
 
 const RegistrationForm = ({ localization }) => {
+  const navigate = useNavigate();
   const {
     signUp,
     required,
@@ -35,7 +37,7 @@ const RegistrationForm = ({ localization }) => {
     notConfirmPassword,
   } = localization.localizedContent;
   // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+
   const [password, setPassword] = useState('');
   // const isLoading = true;
 
@@ -65,10 +67,12 @@ const RegistrationForm = ({ localization }) => {
     //     name,
     //   }),
     // );
-    // goToLoginPage();
+    if (!name || !email || !password) return;
+    console.log({ name, email, password });
+    goToLoginPage();
   };
 
-  // const goToLoginPage = () => navigate('login', { replace: true });
+  const goToLoginPage = () => navigate(routes.login, { replace: true });
 
   return (
     <Formik

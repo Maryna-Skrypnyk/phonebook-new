@@ -1,5 +1,5 @@
 {
-  "greeting": "Welcome to our application",
+  "greeting": "Welcome to application",
   "appTarget": "Use the app to create your own Phonebook",
   "outAppAction": "to quit the app",
   "appAction": "and use all the features of the app",
@@ -16,15 +16,18 @@
   "menuHome": "Home",
   "menuContacts": "Contacts",
 
-  "signUp": "Sign up",
+  "signUp": "Create an account",
+  "signUpPage": "Registration",
   "logIn": "Log in",
-  "logOut": "log out",
+  "logInPage": "Login",
+  "logOut": "Log out",
+  "logOutPage": "Logout",
 
   "namePlaceholder": "Name",
   "phoneNumber": "Phone number",
   "emailPlaceholder": "Email",
   "passwordPlaceholder": "Password",
-  "confirmPasswordPlaceholder": "Confirm password",
+  "confirmPasswordPlaceholder": "Repeat password",
 
   "required": "field is required",
   "notSpaces": "cannot include leading and trailing spaces",

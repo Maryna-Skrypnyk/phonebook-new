@@ -1,5 +1,5 @@
 {
-  "greeting": "Ласкаво просимо до нашого веб-додатку",
+  "greeting": "Ласкаво просимо до веб-додатку",
   "appTarget": "Використовуй програму, щоб створити власну телефонну книгу",
   "outAppAction": "для виходу з додатку",
   "appAction": "і користуйся всіма перевагами додатку",
@@ -16,15 +16,18 @@
   "menuHome": "Головна",
   "menuContacts": "Контакти",
 
-  "signUp": "Зареєструватись",
-  "logIn": "Ввійти",
+  "signUp": "Створити акаунт",
+  "signUpPage": "Реєстрація",
+  "logIn": "Увійти",
+  "logInPage": "Вхід",
   "logOut": "Вийти",
+  "logOutPage": "Вихід",
 
   "namePlaceholder": "Ім'я",
   "phoneNumber": "Номер телефону",
   "emailPlaceholder": "Електронна пошта",
   "passwordPlaceholder": "Пароль",
-  "confirmPasswordPlaceholder": "Підтвердіть пароль",
+  "confirmPasswordPlaceholder": "Повторіть пароль",
 
   "required": "поле обов'язкове",
   "notSpaces": "не може включати пробіли напочатку та вкінці",

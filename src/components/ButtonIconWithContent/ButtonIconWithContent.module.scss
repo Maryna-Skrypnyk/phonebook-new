@@ -142,4 +142,10 @@
   @media screen and (min-width: $tablet) {
     width: 300px;
   }
+
+  &[disabled] {
+    background-color: rgba(82, 178, 252, 0.4);
+    backdrop-filter: blur(50px);
+    border: 1px solid transparent;
+  }
 }
