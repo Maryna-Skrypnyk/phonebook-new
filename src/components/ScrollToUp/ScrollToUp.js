@@ -1,17 +1,17 @@
 import ScrollToTop from 'react-scroll-to-top';
+import { ReactComponent as ArrowUp } from '../../assets/images/icons/upArrow.svg';
 import s from './ScrollToUp.module.scss';
 
 const ScrollToUp = () => {
   return (
-    <div>
-      <div style={{ marginTop: '2px' }} />
+    <>
+      <div />
       <ScrollToTop
-        style={{ backgroundColor: '#52b2fc' }}
         className={s.ScrollToUp}
-        color="#ffffff"
+        component={<ArrowUp className={s.iconArrow} />}
         smooth
       />
-    </div>
+    </>
   );
 };
 
