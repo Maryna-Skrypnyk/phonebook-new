@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import withLocalization from '../hoc/withLocalization';
-import Button from '../Button';
+// import Button from '../Button';
+import ButtonIconWithContent from '../ButtonIconWithContent';
 import s from './LocaleSelector.module.scss';
 
 const LocaleSelector = ({ localization }) => {
@@ -17,22 +18,14 @@ const LocaleSelector = ({ localization }) => {
       viewport={{ once: false }}
     >
       {locales.map(locale => (
-        // <button
-        //   key={locale}
-        //   onClick={() => changeLocale(locale)}
-        //   className={locale === currentLocale ? s.active : s.button}
-        //   aria-label="Toggle locale"
-        // >
-        //   {locale}
-        // </button>
-        <Button
+        <ButtonIconWithContent
           key={locale}
           onClick={() => changeLocale(locale)}
           btnClass={locale === currentLocale ? 'activeLocale' : 'buttonLocale'}
           aria-label="Toggle locale"
         >
           {locale}
-        </Button>
+        </ButtonIconWithContent>
       ))}
     </motion.section>
   );

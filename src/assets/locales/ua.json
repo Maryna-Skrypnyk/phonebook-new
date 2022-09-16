@@ -22,6 +22,9 @@
   "logInPage": "Вхід",
   "logOut": "Вийти",
   "logOutPage": "Вихід",
+  "confirmLogOut": "Ви впевнені, що хочете вийти?",
+  "actYes": "Так",
+  "actNo": "Ні",
 
   "namePlaceholder": "Ім'я",
   "phoneNumber": "Номер телефону",

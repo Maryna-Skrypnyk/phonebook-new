@@ -149,3 +149,28 @@
     border: 1px solid transparent;
   }
 }
+
+.buttonLocale {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 3px;
+  margin: 0 2px;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  background-color: $locale-btn-color; // #424242;
+  color: $white-color;
+  @include transition(background-color);
+
+  @media screen and (min-width: $tablet) {
+    padding: 4px 8px;
+  }
+}
+
+.activeLocale {
+  composes: buttonLocale;
+
+  background-color: $primary-btn-bg-color; // #2196f3;
+}

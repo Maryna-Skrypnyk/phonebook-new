@@ -29,11 +29,13 @@ ButtonIconWithContent.defaultProps = {
   onClick: () => null,
   children: null,
   type: 'button',
+  btnClass: '',
 };
 
 ButtonIconWithContent.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
+  btnClass: PropTypes.string,
   children: PropTypes.node,
   'aria-label': PropTypes.string.isRequired,
 };

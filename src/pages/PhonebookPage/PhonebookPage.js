@@ -141,7 +141,7 @@ const PhonebookPage = ({ localization }) => {
             <ButtonIcon
               onClick={toggleModal}
               btnClass="btnCloseModal"
-              aria-label="Close modal"
+              aria-label="Close modal add contacts"
             >
               <CloseIcon width="32" height="32" fill="currentColor" />
             </ButtonIcon>

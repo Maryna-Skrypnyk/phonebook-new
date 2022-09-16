@@ -33,25 +33,25 @@
 //   }
 // }
 
-.buttonLocale {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 8px;
-  margin: 0 4px;
+// .buttonLocale {
+//   display: inline-flex;
+//   align-items: center;
+//   padding: 4px 8px;
+//   margin: 0 4px;
 
-  font-family: inherit;
-  font-size: 20px;
-  cursor: pointer;
-  border: none;
-  border-radius: 2px;
+//   font-family: inherit;
+//   font-size: 20px;
+//   cursor: pointer;
+//   border: none;
+//   border-radius: 2px;
 
-  background-color: #2196f3; // #424242;
-  color: #ffffff;
-  @include transition(background-color);
-}
+//   background-color: #2196f3; // #424242;
+//   color: #ffffff;
+//   @include transition(background-color);
+// }
 
-.activeLocale {
-  composes: buttonLocale;
+// .activeLocale {
+//   composes: buttonLocale;
 
-  background-color: $primary-btn-bg-color; // #2196f3;
-}
+//   background-color: $primary-btn-bg-color; // #2196f3;
+// }
