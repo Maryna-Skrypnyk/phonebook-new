@@ -14,7 +14,7 @@ import s from './AppLayout.module.scss';
 
 const AppLayout = () => {
   const [showModal, setShowModal] = useState(false);
-  const isLoggedIn = false; // тимчасово
+  const isLoggedIn = true; // тимчасово
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -27,7 +27,7 @@ const AppLayout = () => {
           <div className={s.headerMenu}>
             <Navigation />
             <LocaleSelector />
-            {isLoggedIn ? <UserMenu /> : <AuthNav />}
+            {isLoggedIn ? <UserMenu onClick={toggleModal} /> : <AuthNav />}
 
             {showModal && (
               <Modal onClose={toggleModal}>

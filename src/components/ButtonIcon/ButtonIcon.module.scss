@@ -35,20 +35,23 @@
 
 .btnLogout {
   padding: 0;
-  color: $secondary-gray-color;
-  background-color: $white-color;
+  color: #52b2fc;
+  // background-color: $white-color;
+  background-color: transparent;
   font-family: $primary-font;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
   border: none;
   cursor: pointer;
+  width: 100%;
 
   @include transition(color);
 
   &:hover,
   &:focus {
     color: $primary-btn-bg-color;
+    // background-color: $primary-btn-bg-color;
   }
 }
 

@@ -12,13 +12,13 @@
   }
 }
 
-.authNavListItem:not(:last-child) {
-  margin-right: 10px;
+// .authNavListItem:not(:last-child) {
+//   margin-right: 10px;
 
-  @media screen and (min-width: $tablet) {
-    margin-right: 20px;
-  }
-}
+//   @media screen and (min-width: $tablet) {
+//     margin-right: 20px;
+//   }
+// }
 
 // .AuthNavListItem {
 //   margin-left: 10px;
@@ -31,20 +31,29 @@
 .navLink {
   display: inline-block;
   margin: 0;
-  padding: 15px 0 15px;
+  padding: 10px 0;
   text-decoration: none;
-  // color: $menu-text-color;
-  color: $white-color;
+  color: $text-color;
+  // color: $white-color;
   font-size: 18px;
   font-weight: 700;
   @include transition(color);
 
   &:hover {
-    color: $secondary-background-color;
+    color: $primary-btn-bg-color;
   }
+
+  // @media screen and (min-width: $tablet) {
+  //   padding: 15px 0;
+  // }
 }
 
 .navLinkActive {
   composes: navLink;
-  color: $secondary-background-color;
+  color: $primary-btn-bg-color;
+}
+
+.authIcon {
+  fill: currentColor;
+  @include transition(fill);
 }

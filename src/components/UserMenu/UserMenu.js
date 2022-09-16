@@ -1,20 +1,23 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 // import { useSelector } from 'react-redux';
 // import authSelectors from '../../../redux/auth/auth-selectors';
 import withLocalization from '../hoc/withLocalization';
 import ButtonIcon from '../ButtonIcon';
-import useSizeScreen from '../../hooks/useSizeScreen';
 import { ReactComponent as Logout } from '../../assets/images/icons/logout.svg';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
-import noAvatar from '../../assets/images/noAvatar.png';
+// import noAvatar from '../../assets/images/noAvatar.png';
 import { styled } from '@mui/material/styles';
 import s from './UserMenu.module.scss';
 
 const MyAvatar = styled(Avatar)({
   background: '#F6AB0E',
   color: '#ffffff',
-  width: 30,
-  height: 30,
+  width: 34,
+  height: 34,
   borderRadius: '50%',
   // marginRight: 10,
   fontSize: 16,
@@ -22,13 +25,42 @@ const MyAvatar = styled(Avatar)({
   boxShadow: '0px 6px 15px rgba(36, 204, 167, 0.5);',
 });
 
+const MyMenu = styled(Menu)({
+  ul: {
+    padding: 10,
+    li: {
+      backgroundColor: 'transparent',
+    },
+    'li:not(:last-child)': {
+      borderBottom: '1px dotted #52b2fc',
+      '&:hover': {
+        backgroundColor: 'transparent',
+      },
+    },
+    'li:last-child': {
+      '&:hover': {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+});
+
 const UserMenu = ({ onClick, localization }) => {
   const { logOut } = localization.localizedContent;
-  const sizeScreen = useSizeScreen();
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = e => {
+    setAnchorEl(null);
+  };
 
   // const name = useSelector(authSelectors.getUsername);
   const name = 'Maryna Skrypnyk'; // тимчасово
-
   const initials =
     name.split(' ').length === 2 && name.split(' ')[1][0]
       ? `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`
@@ -36,37 +68,49 @@ const UserMenu = ({ onClick, localization }) => {
 
   return (
     <div className={s.UserMenu}>
-      {sizeScreen <= 767 ? (
-        <div className={s.UserName}>
-          <MyAvatar alt={name} src={noAvatar}>
-            {initials}
-          </MyAvatar>
-        </div>
-      ) : (
-        <div className={s.UserName}>
-          <MyAvatar alt={name} src={noAvatar}>
-            {initials}
-          </MyAvatar>
-          <span className={s.Name}>{name}</span>
-        </div>
-      )}
-
-      <ButtonIcon
-        onClick={onClick}
-        aria-label="Open modal"
-        btnClass="btnLogout"
+      <Button
+        id="demo-positioned-button"
+        aria-controls={open ? 'demo-positioned-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        // style={{ color: open ? '#F6AB0E' : '#fff' }}
       >
-        {sizeScreen <= 767 ? (
-          <div className={s.boxLogout}>
-            <Logout className={s.svgLogout} />
-          </div>
-        ) : (
-          <div className={s.boxLogout}>
-            <Logout className={s.svgLogout} />
-            <span className={s.textNav}>{logOut}</span>
-          </div>
-        )}
-      </ButtonIcon>
+        <MyAvatar alt={name}>{initials}</MyAvatar>
+      </Button>
+
+      <MyMenu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <MenuItem className={s.authNavListItem}>
+          <div className={s.Name}>{name}</div>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <ButtonIcon
+            onClick={onClick}
+            aria-label="Open modal"
+            btnClass="btnLogout"
+          >
+            <div className={s.boxLogout}>
+              <Logout className={s.svgLogout} />
+              <span className={s.textNav}>{logOut}</span>
+            </div>
+          </ButtonIcon>
+        </MenuItem>
+      </MyMenu>
     </div>
   );
 };

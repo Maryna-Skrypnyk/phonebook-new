@@ -1,8 +1,10 @@
-.UserMenu {
-  display: flex;
-  align-items: center;
-  // margin-left: 10px;
-}
+@import '../../styles/index.scss';
+
+// .UserMenu {
+//   display: flex;
+//   align-items: center;
+//   // margin-left: 10px;
+// }
 
 .UserName {
   display: flex;
@@ -31,7 +33,6 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  border-right: 1px solid #bdbdbd;
 }
 
 .svgLogout {
@@ -39,13 +40,14 @@
   width: 18px;
   height: 18px;
   padding: 0px;
+  margin-right: 5px;
 
   &:hover,
   &:focus {
     fill: currentColor;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     margin-right: 10px;
   }
 }

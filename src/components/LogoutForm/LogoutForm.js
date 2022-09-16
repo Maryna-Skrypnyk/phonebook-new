@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import withLocalization from '../hoc/withLocalization';
+import Spinner from '../Spinner';
 // import { useDispatch, useSelector } from 'react-redux';
 // import authOperations from '../../../redux/auth/auth-operations';
 // import authSelectors from '../../../redux/auth/auth-selectors';
@@ -12,6 +13,8 @@ const LogoutForm = ({ onClose, localization }) => {
   const { confirmLogOut, actYes, actNo } = localization.localizedContent;
   // const dispatch = useDispatch();
   // const isLoading = useSelector(authSelectors.getLoading);
+
+  const isLoading = false; // тимчасово
 
   const handleClickCancel = e => {
     if (e.currentTarget === e.target) {
@@ -27,23 +30,25 @@ const LogoutForm = ({ onClose, localization }) => {
   return (
     <div className={s.Form}>
       <p className={s.Text}>{confirmLogOut}</p>
-      <ButtonIconWithContent
-        onClick={handleClickLogout}
-        btnClass="btnAddContact"
-        aria-label="Log out and close modal"
-      >
-        {actYes}
-      </ButtonIconWithContent>
+      <div className={s.buttonsLogout}>
+        <ButtonIconWithContent
+          onClick={handleClickLogout}
+          btnClass="btnLogoutContact"
+          aria-label="Log out and close modal"
+        >
+          {actYes}
+        </ButtonIconWithContent>
 
-      <ButtonIconWithContent
-        onClick={handleClickCancel}
-        btnClass="btnAddContact"
-        aria-label="Cancel exit and close modal"
-      >
-        {actNo}
-      </ButtonIconWithContent>
+        <ButtonIconWithContent
+          onClick={handleClickCancel}
+          btnClass="btnLogoutContact"
+          aria-label="Cancel exit and close modal"
+        >
+          {actNo}
+        </ButtonIconWithContent>
+      </div>
 
-      {/* {isLoading && <Spinner />} */}
+      {isLoading && <Spinner />}
     </div>
   );
 };
