@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
-import withLocalization from '../hoc/withLocalization';
-import Spinner from '../Spinner';
+import withLocalization from '../../hoc/withLocalization';
+import Spinner from '../../Spinner';
 // import { useDispatch, useSelector } from 'react-redux';
 // import authOperations from '../../../redux/auth/auth-operations';
 // import authSelectors from '../../../redux/auth/auth-selectors';
-import ButtonIconWithContent from '../ButtonIconWithContent';
-// import Spinner from '../../Spinner';
-
+import ButtonIconWithContent from '../../ButtonIconWithContent';
 import s from './LogoutForm.module.scss';
 
 const LogoutForm = ({ onClose, localization }) => {

@@ -30,15 +30,25 @@
 
 //////////////////////////
 
-import { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import { NavLink } from 'react-router-dom';
 import withLocalization from '../hoc/withLocalization';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+// import Button from '@mui/material/Button';
+// import Menu from '@mui/material/Menu';
+// import MenuItem from '@mui/material/MenuItem';
 import { ReactComponent as AuthIcon } from '../../assets/images/icons/auth_icon.svg';
 import { styled } from '@mui/material/styles';
 import s from './AuthNav.module.scss';
+
+const Button = lazy(() =>
+  import('@mui/material/Button' /* webpackChunkName: "authButton-mui" */),
+);
+const Menu = lazy(() =>
+  import('@mui/material/Menu' /* webpackChunkName: "authMenu-mui" */),
+);
+const MenuItem = lazy(() =>
+  import('@mui/material/MenuItem' /* webpackChunkName: "authMenuItem-mui" */),
+);
 
 const MyMenu = styled(Menu)({
   ul: {
@@ -85,7 +95,7 @@ const AuthNav = ({ localization }) => {
   };
 
   return (
-    <div>
+    <>
       <MyButton
         id="demo-positioned-button"
         aria-controls={open ? 'demo-positioned-menu' : undefined}
@@ -123,7 +133,7 @@ const AuthNav = ({ localization }) => {
           </MenuItem>
         ))}
       </MyMenu>
-    </div>
+    </>
   );
 };
 

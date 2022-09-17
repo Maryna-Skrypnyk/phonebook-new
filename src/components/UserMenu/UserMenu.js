@@ -1,17 +1,29 @@
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import PropTypes from 'prop-types';
 // import { useSelector } from 'react-redux';
 // import authSelectors from '../../../redux/auth/auth-selectors';
 import withLocalization from '../hoc/withLocalization';
 import ButtonIcon from '../ButtonIcon';
 import { ReactComponent as Logout } from '../../assets/images/icons/logout.svg';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Avatar from '@mui/material/Avatar';
-// import noAvatar from '../../assets/images/noAvatar.png';
+// import Button from '@mui/material/Button';
+// import Menu from '@mui/material/Menu';
+// import MenuItem from '@mui/material/MenuItem';
+// import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
 import s from './UserMenu.module.scss';
+
+const Button = lazy(() =>
+  import('@mui/material/Button' /* webpackChunkName: "buttonUser-mui" */),
+);
+const Menu = lazy(() =>
+  import('@mui/material/Menu' /* webpackChunkName: "menuUser-mui" */),
+);
+const MenuItem = lazy(() =>
+  import('@mui/material/MenuItem' /* webpackChunkName: "menuItemUser-mui" */),
+);
+const Avatar = lazy(() =>
+  import('@mui/material/Avatar' /* webpackChunkName: "avatar-mui" */),
+);
 
 const MyAvatar = styled(Avatar)({
   background: '#F6AB0E',
@@ -74,9 +86,14 @@ const UserMenu = ({ onClick, localization }) => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        // style={{ color: open ? '#F6AB0E' : '#fff' }}
+        // style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
       >
-        <MyAvatar alt={name}>{initials}</MyAvatar>
+        <MyAvatar
+          alt={name}
+          style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
+        >
+          {initials}
+        </MyAvatar>
       </Button>
 
       <MyMenu

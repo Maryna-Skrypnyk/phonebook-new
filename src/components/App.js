@@ -15,17 +15,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import RegistrationPage from '../pages/RegistrationPage';
 import LoginPage from '../pages/LoginPage';
 
-import './App.module.scss';
-
-const HomePage = lazy(() =>
-  import('../pages/HomePage' /* webpackChunkName: "home-page" */),
-);
 // const LoginPage = lazy(() =>
 //   import('../pages/LoginPage' /* webpackChunkName: "login-page" */),
 // );
 // const RegistrationPage = lazy(() =>
 //   import('../pages/RegistrationPage' /* webpackChunkName: "register-page" */),
 // );
+
+const HomePage = lazy(() =>
+  import('../pages/HomePage' /* webpackChunkName: "home-page" */),
+);
 const PhonebookPage = lazy(() =>
   import('../pages/PhonebookPage' /* webpackChunkName: "contacts-page" */),
 );

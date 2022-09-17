@@ -1,11 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.f132e208.css",
-    "main.js": "/static/js/main.50f54076.js",
+    "main.css": "/static/css/main.740a1d86.css",
+    "main.js": "/static/js/main.952cc8d0.js",
     "home-page.css": "/static/css/home-page.c0117bac.chunk.css",
     "home-page.js": "/static/js/home-page.ec810d38.chunk.js",
     "contacts-page.css": "/static/css/contacts-page.36f9b3f6.chunk.css",
     "contacts-page.js": "/static/js/contacts-page.db1b6c0c.chunk.js",
+    "button-mui.js": "/static/js/button-mui.2dd3bf40.chunk.js",
+    "menu-mui.js": "/static/js/menu-mui.2c54cfec.chunk.js",
+    "menuItem-mui.js": "/static/js/menuItem-mui.036cbf5d.chunk.js",
+    "avatar-mui.js": "/static/js/avatar-mui.fe0c34be.chunk.js",
+    "static/js/480.bb36ad2a.chunk.js": "/static/js/480.bb36ad2a.chunk.js",
     "static/media/Circe-Bold.woff": "/static/media/Circe-Bold.30401a85fd2d86b1c587.woff",
     "static/media/Circe-Regular.woff": "/static/media/Circe-Regular.0f1760c600b59a347aab.woff",
     "static/media/Poppins-Regular.woff": "/static/media/Poppins-Regular.0cb0e08604d9c19c5c38.woff",
@@ -32,15 +37,20 @@
     "static/media/user.svg": "/static/media/user.e309166cb56fc3ab8026cfa8f716e56d.svg",
     "static/media/email.svg": "/static/media/email.cd2402e9d7cd19e98db90f9235e4576f.svg",
     "static/media/add.svg": "/static/media/add.b32f3a092015d7a228e03084a624cb0b.svg",
-    "main.f132e208.css.map": "/static/css/main.f132e208.css.map",
-    "main.50f54076.js.map": "/static/js/main.50f54076.js.map",
+    "main.740a1d86.css.map": "/static/css/main.740a1d86.css.map",
+    "main.952cc8d0.js.map": "/static/js/main.952cc8d0.js.map",
     "home-page.c0117bac.chunk.css.map": "/static/css/home-page.c0117bac.chunk.css.map",
     "home-page.ec810d38.chunk.js.map": "/static/js/home-page.ec810d38.chunk.js.map",
     "contacts-page.36f9b3f6.chunk.css.map": "/static/css/contacts-page.36f9b3f6.chunk.css.map",
-    "contacts-page.db1b6c0c.chunk.js.map": "/static/js/contacts-page.db1b6c0c.chunk.js.map"
+    "contacts-page.db1b6c0c.chunk.js.map": "/static/js/contacts-page.db1b6c0c.chunk.js.map",
+    "button-mui.2dd3bf40.chunk.js.map": "/static/js/button-mui.2dd3bf40.chunk.js.map",
+    "menu-mui.2c54cfec.chunk.js.map": "/static/js/menu-mui.2c54cfec.chunk.js.map",
+    "menuItem-mui.036cbf5d.chunk.js.map": "/static/js/menuItem-mui.036cbf5d.chunk.js.map",
+    "avatar-mui.fe0c34be.chunk.js.map": "/static/js/avatar-mui.fe0c34be.chunk.js.map",
+    "480.bb36ad2a.chunk.js.map": "/static/js/480.bb36ad2a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f132e208.css",
-    "static/js/main.50f54076.js"
+    "static/css/main.740a1d86.css",
+    "static/js/main.952cc8d0.js"
   ]
 }

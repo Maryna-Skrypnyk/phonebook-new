@@ -5,7 +5,7 @@ import AuthNav from '../AuthNav';
 import Container from '../Container';
 import UserMenu from '../UserMenu';
 import Modal from '../Modal';
-import LogoutForm from '../LogoutForm';
+import LogoutForm from '../AuthForms/LogoutForm';
 import ButtonIcon from '../ButtonIcon';
 import { ReactComponent as CloseIcon } from '../../assets/images/icons/close.svg';
 import Footer from '../Footer';
@@ -14,7 +14,7 @@ import s from './AppLayout.module.scss';
 
 const AppLayout = () => {
   const [showModal, setShowModal] = useState(false);
-  const isLoggedIn = true; // тимчасово
+  const isLoggedIn = false; // тимчасово
 
   const toggleModal = () => {
     setShowModal(!showModal);
