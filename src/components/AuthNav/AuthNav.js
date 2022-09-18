@@ -33,19 +33,13 @@
 import React, { useState, lazy } from 'react';
 import { NavLink } from 'react-router-dom';
 import withLocalization from '../hoc/withLocalization';
-// import Button from '@mui/material/Button';
-// import Menu from '@mui/material/Menu';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
 // import MenuItem from '@mui/material/MenuItem';
 import { ReactComponent as AuthIcon } from '../../assets/images/icons/auth_icon.svg';
 import { styled } from '@mui/material/styles';
 import s from './AuthNav.module.scss';
 
-const Button = lazy(() =>
-  import('@mui/material/Button' /* webpackChunkName: "authButton-mui" */),
-);
-const Menu = lazy(() =>
-  import('@mui/material/Menu' /* webpackChunkName: "authMenu-mui" */),
-);
 const MenuItem = lazy(() =>
   import('@mui/material/MenuItem' /* webpackChunkName: "authMenuItem-mui" */),
 );
@@ -87,10 +81,9 @@ const AuthNav = ({ localization }) => {
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
-    console.log(anchorEl);
   };
 
-  const handleClose = e => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 

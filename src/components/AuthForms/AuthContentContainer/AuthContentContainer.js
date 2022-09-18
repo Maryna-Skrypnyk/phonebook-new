@@ -9,7 +9,7 @@ const AuthContentContainer = ({ children, authContainer }) => {
         className={s[`${authContainer}`]}
         initial={{ scale: 0.5 }}
         exit={{ scale: 0.5 }}
-        transition={{ ease: 'easeOut', duration: 0.5 }}
+        transition={{ ease: 'easeOut', duration: 0.3 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
       >
