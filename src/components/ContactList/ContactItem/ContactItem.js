@@ -7,11 +7,22 @@ const ContactItem = ({ onDeleteContact, name, number }) => {
   return (
     <motion.li
       className={s.contactItem}
-      initial={{ opacity: 0 }}
-      exit={{ scale: 0.5, opacity: 0 }}
-      transition={{ ease: 'easeOut', duration: 0.5 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      // initial={{ opacity: 0 }}
+      // exit={{ scale: 0.5, opacity: 0 }}
+      // transition={{ ease: 'easeOut', duration: 0.5 }}
+      // whileInView={{ opacity: 1, scale: 1 }}
+      // viewport={{ once: false }}
+      initial={{
+        x: -50,
+        opacity: 0,
+      }}
+      animate={{
+        x: 0,
+      }}
+      exit={{ x: 50, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
       viewport={{ once: false }}
+      transition={{ ease: 'easeOut', duration: 0.3 }}
     >
       <p className={s.contact}>
         <span className={s.contactName}>{name}:</span> {number}
