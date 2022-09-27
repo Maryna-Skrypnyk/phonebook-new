@@ -5,7 +5,7 @@ const PublicRoute = ({ children, restricted = false, ...routeProps }) => {
   const isLoggedIn = true; // тимчасово
 
   const shouldRedirect = isLoggedIn && restricted;
-  return shouldRedirect ? <Navigate to="/contacts" /> : children;
+  return shouldRedirect ? <Navigate to="/contacts" replace={true} /> : children;
 };
 
 export default PublicRoute;
