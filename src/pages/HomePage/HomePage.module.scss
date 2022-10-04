@@ -46,3 +46,15 @@
     color: $img-background-yellow-color;
   }
 }
+
+.imgHome {
+  width: 300px;
+
+  @media screen and (min-width: $tablet) {
+    width: 350px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 400px;
+  }
+}

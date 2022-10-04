@@ -1,12 +1,16 @@
-import PropTypes from 'prop-types';
 import withLocalization from '../hoc/withLocalization';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeFilter } from '../../redux/contacts/contacts-actions';
+import { getContactsFilter } from '../../redux/contacts/contacts-selectors';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import s from './Filter.module.scss';
 
-const Filter = ({ value, onChange, localization }) => {
+const Filter = ({ localization }) => {
   const filterInputId = uuidv4();
   const { titleFilter, filterPlaceholder } = localization.localizedContent;
+  const value = useSelector(getContactsFilter);
+  const dispatch = useDispatch();
 
   return (
     <motion.div
@@ -25,7 +29,7 @@ const Filter = ({ value, onChange, localization }) => {
         type="text"
         name="name"
         value={value}
-        onChange={onChange}
+        onChange={event => dispatch(changeFilter(event.target.value))}
         placeholder={filterPlaceholder}
         className={s.input}
         initial={{ scale: 0 }}
@@ -35,11 +39,6 @@ const Filter = ({ value, onChange, localization }) => {
       />
     </motion.div>
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default withLocalization(Filter);

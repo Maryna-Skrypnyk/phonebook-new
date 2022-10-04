@@ -1,11 +1,17 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getVisibleContactsSortByName } from '../../redux/contacts/contacts-selectors';
+import { deleteContact } from '../../redux/contacts/contacts-actions';
 import ContactItem from './ContactItem';
 import withLocalization from '../hoc/withLocalization';
 import { motion, AnimatePresence } from 'framer-motion';
 import s from './ContactList.module.scss';
 
-const ContactList = ({ contacts, onDeleteContact, localization }) => {
+const ContactList = ({ localization }) => {
   const { noContacts } = localization.localizedContent;
+
+  const contacts = useSelector(getVisibleContactsSortByName);
+  const dispatch = useDispatch();
+  const onDeleteContact = id => dispatch(deleteContact(id));
 
   return (
     <>
@@ -26,25 +32,14 @@ const ContactList = ({ contacts, onDeleteContact, localization }) => {
               key={id}
               name={name}
               number={number}
-              onDeleteContact={() => {
-                onDeleteContact(id);
-              }}
+              // onDeleteContact={() => dispatch(deleteContact(id))}
+              onDeleteContact={() => onDeleteContact(id)}
             />
           ))}
         </AnimatePresence>
       </ul>
     </>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
 };
 
 export default withLocalization(ContactList);

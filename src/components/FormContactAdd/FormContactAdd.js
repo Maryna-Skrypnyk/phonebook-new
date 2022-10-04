@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeFilter } from '../../redux/contacts/contacts-actions';
+import { addContact } from '../../redux/contacts/contacts-actions';
+import { getContacts } from '../../redux/contacts/contacts-selectors';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import withLocalization from '../hoc/withLocalization';
 import ButtonIconWithContent from '../ButtonIconWithContent/ButtonIconWithContent';
 import * as Yup from 'yup';
+import { makeToastWarn } from '../Notification/notification';
 import s from './FormContactAdd.module.scss';
 
-const FormContactAdd = ({ onSubmitForm, localization }) => {
+const FormContactAdd = ({ saveContact, localization }) => {
   const {
+    isContact,
     contentBtnAdd,
     namePlaceholder,
     phoneNumber,
@@ -19,9 +25,23 @@ const FormContactAdd = ({ onSubmitForm, localization }) => {
     maxCharacterNumber,
   } = localization.localizedContent;
 
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+
   const onHandleSubmit = ({ name, number }, { resetForm }) => {
-    onSubmitForm({ name, number });
+    if (contacts.find(contact => contact.name === name)) {
+      makeToastWarn(`${namePlaceholder} "${name}" ${isContact}`, 'warn');
+      return;
+    }
+
+    if (contacts.find(contact => contact.number === number)) {
+      makeToastWarn(`${phoneNumber} "${number}" ${isContact}`, 'warn');
+      return;
+    }
+    dispatch(addContact({ name, number }));
     resetForm({ name: '', number: '' });
+    saveContact();
+    dispatch(changeFilter(''));
   };
 
   const validationSchema = Yup.object({
@@ -73,9 +93,7 @@ const FormContactAdd = ({ onSubmitForm, localization }) => {
           name="number"
           className={s.errorNumber}
         />
-        {/* <Button type="submit" btnClass="button" aria-label="Add contact">
-          {contentBtnAdd}
-        </Button> */}
+
         <ButtonIconWithContent
           type="submit"
           btnClass="button"
@@ -89,7 +107,7 @@ const FormContactAdd = ({ onSubmitForm, localization }) => {
 };
 
 FormContactAdd.propTypes = {
-  onSubmitForm: PropTypes.func.isRequired,
+  saveContact: PropTypes.func.isRequired,
 };
 
 export default withLocalization(FormContactAdd);

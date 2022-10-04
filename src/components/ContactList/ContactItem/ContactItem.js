@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ButtonIcon from '../../ButtonIcon';
 import { motion } from 'framer-motion';
 import { ReactComponent as DeleteIcon } from '../../../assets/images/icons/delete2.svg';
@@ -7,11 +8,6 @@ const ContactItem = ({ onDeleteContact, name, number }) => {
   return (
     <motion.li
       className={s.contactItem}
-      // initial={{ opacity: 0 }}
-      // exit={{ scale: 0.5, opacity: 0 }}
-      // transition={{ ease: 'easeOut', duration: 0.5 }}
-      // whileInView={{ opacity: 1, scale: 1 }}
-      // viewport={{ once: false }}
       initial={{
         x: -50,
         opacity: 0,
@@ -37,6 +33,12 @@ const ContactItem = ({ onDeleteContact, name, number }) => {
       </ButtonIcon>
     </motion.li>
   );
+};
+
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactItem;

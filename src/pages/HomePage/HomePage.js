@@ -59,6 +59,7 @@ const HomePage = ({ localization }) => {
         {appAction}.
       </p>
       {/* )} */}
+
       <AnimatePresence>
         <motion.div
           initial={{ scale: 0 }}
@@ -66,7 +67,7 @@ const HomePage = ({ localization }) => {
           exit={{ scale: 0 }}
           transition={{ ease: 'easeOut', duration: 0.5 }}
         >
-          <ImgHome alt="phonebookIcon" width="300" />
+          <ImgHome alt="phonebookIcon" className={s.imgHome} />
           <Title secondaryTitle={primaryTitle} titleClass="homeImgHeading" />
         </motion.div>
       </AnimatePresence>
