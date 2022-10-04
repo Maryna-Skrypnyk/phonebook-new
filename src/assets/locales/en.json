@@ -11,6 +11,7 @@
   "titleFilter": "Find contacts by name",
   "filterPlaceholder": "Enter contact name",
   "noContacts": "There are no contacts in the list",
+  "noFilterContacts": "There are no contacts by request",
   "isContact": "is already in contacts",
 
   "menuHome": "Home",

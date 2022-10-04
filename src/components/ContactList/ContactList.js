@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getVisibleContactsSortByName } from '../../redux/contacts/contacts-selectors';
+import {
+  getVisibleContactsSortByName,
+  getContacts,
+} from '../../redux/contacts/contacts-selectors';
 import { deleteContact } from '../../redux/contacts/contacts-actions';
 import ContactItem from './ContactItem';
 import withLocalization from '../hoc/withLocalization';
@@ -7,15 +10,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import s from './ContactList.module.scss';
 
 const ContactList = ({ localization }) => {
-  const { noContacts } = localization.localizedContent;
+  const { noContacts, noFilterContacts } = localization.localizedContent;
 
-  const contacts = useSelector(getVisibleContactsSortByName);
+  // const contacts = useSelector(getVisibleContactsSortByName);
+
+  const allContacts = useSelector(getContacts);
+  const filterContacts = useSelector(getVisibleContactsSortByName);
+
   const dispatch = useDispatch();
   const onDeleteContact = id => dispatch(deleteContact(id));
 
   return (
     <>
-      {contacts.length === 0 && (
+      {filterContacts.length === 0 && allContacts.length !== 0 && (
+        <motion.p
+          className={s.notice}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          {noFilterContacts}
+        </motion.p>
+      )}
+      {allContacts.length === 0 && (
         <motion.p
           className={s.notice}
           initial={{ opacity: 0 }}
@@ -27,7 +44,7 @@ const ContactList = ({ localization }) => {
       )}
       <ul className={s.contactList}>
         <AnimatePresence>
-          {contacts.map(({ name, number, id }) => (
+          {filterContacts.map(({ name, number, id }) => (
             <ContactItem
               key={id}
               name={name}
