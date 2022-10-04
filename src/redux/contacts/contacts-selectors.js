@@ -1,32 +1,63 @@
-export const getContacts = state => state.contacts.items;
+import { createSelector } from '@reduxjs/toolkit';
 
+export const getContacts = state => state.contacts.items;
 export const getContactsFilter = state => state.contacts.filter;
 
-const getVisibleContacts = state => {
-  const allContacts = getContacts(state);
-  const filter = getContactsFilter(state);
+// const getVisibleContacts = state => {
+//   const allContacts = getContacts(state);
+//   const filter = getContactsFilter(state);
 
-  const normalizedFilter = filter.toLowerCase();
-  return allContacts.filter(contact =>
-    contact.name.toLocaleLowerCase().includes(normalizedFilter),
-  );
-};
+//   const normalizedFilter = filter.toLowerCase();
+//   return allContacts.filter(contact =>
+//     contact.name.toLocaleLowerCase().includes(normalizedFilter),
+//   );
+// };
 
-export const getVisibleContactsSortByName = state => {
-  const visibleContacts = getVisibleContacts(state);
+// export const getVisibleContactsSortByName = state => {
+//   const visibleContacts = getVisibleContacts(state);
 
-  const visibleContactsSortByName = visibleContacts.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
+//   const visibleContactsSortByName = visibleContacts.sort((a, b) => {
+//     const nameA = a.name.toUpperCase();
+//     const nameB = b.name.toUpperCase();
 
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
+//     if (nameA < nameB) {
+//       return -1;
+//     }
+//     if (nameA > nameB) {
+//       return 1;
+//     }
+//     return 0;
+//   });
 
-  return visibleContactsSortByName;
-};
+//   return visibleContactsSortByName;
+// };
+
+/// або через createSelector
+
+const getVisibleContacts = createSelector(
+  [getContacts, getContactsFilter],
+  (allContacts, filter) => {
+    const normalizedFilter = filter.toLowerCase();
+    return allContacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(normalizedFilter),
+    );
+  },
+);
+
+export const getVisibleContactsSortByName = createSelector(
+  [getVisibleContacts],
+  visibleContacts => {
+    return visibleContacts.sort((a, b) => {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  },
+);
