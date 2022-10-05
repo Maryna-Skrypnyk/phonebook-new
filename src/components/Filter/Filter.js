@@ -1,10 +1,7 @@
 import withLocalization from '../hoc/withLocalization';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/contacts/contacts-actions';
-import {
-  getContactsFilter,
-  getContacts,
-} from '../../redux/contacts/contacts-selectors';
+import { contactsSelectors } from '../../redux/contacts';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import s from './Filter.module.scss';
@@ -12,8 +9,8 @@ import s from './Filter.module.scss';
 const Filter = ({ localization }) => {
   const filterInputId = uuidv4();
   const { titleFilter, filterPlaceholder } = localization.localizedContent;
-  const value = useSelector(getContactsFilter);
-  const contacts = useSelector(getContacts);
+  const value = useSelector(contactsSelectors.getContactsFilter);
+  const contacts = useSelector(contactsSelectors.getContacts);
   const dispatch = useDispatch();
 
   return (

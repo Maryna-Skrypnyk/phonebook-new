@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/contacts/contacts-actions';
-import { addContact } from '../../redux/contacts/contacts-actions';
-import { getContacts } from '../../redux/contacts/contacts-selectors';
+// import { addContact } from '../../redux/contacts/contacts-operations';
+// import { getContacts } from '../../redux/contacts/contacts-selectors';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import withLocalization from '../hoc/withLocalization';
 import ButtonIconWithContent from '../ButtonIconWithContent/ButtonIconWithContent';
@@ -25,7 +26,7 @@ const FormContactAdd = ({ saveContact, localization }) => {
     maxCharacterNumber,
   } = localization.localizedContent;
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(contactsSelectors.getContacts);
   const dispatch = useDispatch();
 
   const onHandleSubmit = ({ name, number }, { resetForm }) => {
@@ -38,7 +39,7 @@ const FormContactAdd = ({ saveContact, localization }) => {
       makeToastWarn(`${phoneNumber} "${number}" ${isContact}`, 'warn');
       return;
     }
-    dispatch(addContact({ name, number }));
+    dispatch(contactsOperations.addContact({ name, number }));
     resetForm({ name: '', number: '' });
     saveContact();
     dispatch(changeFilter(''));

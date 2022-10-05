@@ -31,6 +31,7 @@ const contactsPersistConfig = {
 export const store = configureStore({
   reducer: {
     contacts: persistReducer(contactsPersistConfig, contactsReducer),
+    // contacts: contactsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

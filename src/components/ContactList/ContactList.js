@@ -1,9 +1,7 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  getVisibleContactsSortByName,
-  getContacts,
-} from '../../redux/contacts/contacts-selectors';
-import { deleteContact } from '../../redux/contacts/contacts-actions';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
+import Spinner from '../Spinner';
 import ContactItem from './ContactItem';
 import withLocalization from '../hoc/withLocalization';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,16 +10,23 @@ import s from './ContactList.module.scss';
 const ContactList = ({ localization }) => {
   const { noContacts, noFilterContacts } = localization.localizedContent;
 
-  // const contacts = useSelector(getVisibleContactsSortByName);
+  // const contacts = useSelector(contactsSelectors.getVisibleContactsSortByName);
 
-  const allContacts = useSelector(getContacts);
-  const filterContacts = useSelector(getVisibleContactsSortByName);
+  const allContacts = useSelector(contactsSelectors.getContacts);
+  const filterContacts = useSelector(
+    contactsSelectors.getVisibleContactsSortByName,
+  );
+  const isLoading = useSelector(contactsSelectors.getLoading);
 
   const dispatch = useDispatch();
-  const onDeleteContact = id => dispatch(deleteContact(id));
+
+  useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
+
+  const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 
   return (
     <>
+      {isLoading && <Spinner />}
       {filterContacts.length === 0 && allContacts.length !== 0 && (
         <motion.p
           className={s.notice}
@@ -44,7 +49,7 @@ const ContactList = ({ localization }) => {
       )}
       <ul className={s.contactList}>
         <AnimatePresence>
-          {filterContacts.map(({ name, number, id }) => (
+          {filterContacts?.map(({ name, number, id }) => (
             <ContactItem
               key={id}
               name={name}

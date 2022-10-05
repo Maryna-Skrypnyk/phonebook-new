@@ -178,7 +178,6 @@ import { ReactComponent as CloseIcon } from '../../assets/images/icons/close.svg
 const PhonebookPage = ({ localization }) => {
   const { primaryTitle, secondaryTitle, contentBtnAdd } =
     localization.localizedContent;
-
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {

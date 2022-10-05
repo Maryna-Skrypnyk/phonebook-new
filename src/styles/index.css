@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Poppins';
+  src: local("☺"), url("../assets/fonts/Poppins-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: local("☺"), url("../assets/fonts/Poppins-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: local("☺"), url("../assets/fonts/Circe-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: local("☺"), url("../assets/fonts/Circe-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* open-sans-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/open-sans-v34-latin_cyrillic-regular.eot");
+  /* IE9 Compat Modes */
+  src: local(""), url("../assets/fonts/open-sans-v34-latin_cyrillic-regular.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/open-sans-v34-latin_cyrillic-regular.woff2") format("woff2"), url("../assets/fonts/open-sans-v34-latin_cyrillic-regular.woff") format("woff"), url("../assets/fonts/open-sans-v34-latin_cyrillic-regular.ttf") format("truetype"), url("../assets/fonts/open-sans-v34-latin_cyrillic-regular.svg#OpenSans") format("svg");
+  /* Legacy iOS */
+}
+
+/* open-sans-700 - latin_cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/open-sans-v34-latin_cyrillic-700.eot");
+  /* IE9 Compat Modes */
+  src: local(""), url("../assets/fonts/open-sans-v34-latin_cyrillic-700.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/open-sans-v34-latin_cyrillic-700.woff2") format("woff2"), url("../assets/fonts/open-sans-v34-latin_cyrillic-700.woff") format("woff"), url("../assets/fonts/open-sans-v34-latin_cyrillic-700.ttf") format("truetype"), url("../assets/fonts/open-sans-v34-latin_cyrillic-700.svg#OpenSans") format("svg");
+  /* Legacy iOS */
+}
+
+body {
+  margin: 0;
+  font-family: "Circe", sans-serif;
+  background-image: url(../assets/images/bg-y-b.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #2a2a2a;
+  line-height: 1.5;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, from(#2196f3), to(#52b2fc));
+  background: linear-gradient(to bottom, #2196f3, #52b2fc);
+  border-radius: 8px;
+  border: 0.5px solid #e0e0e0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+/*# sourceMappingURL=index.css.map */
