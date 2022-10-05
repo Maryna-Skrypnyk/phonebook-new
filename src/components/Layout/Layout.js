@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import s from './Layout.module.scss';
 
-const Layout = ({ children }) => <div className={s.Layout}>{children}</div>;
+const Layout = ({ children }) => <div>{children}</div>;
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

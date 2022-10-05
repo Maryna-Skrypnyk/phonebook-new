@@ -44,10 +44,12 @@ const AppLayout = () => {
           </div>
         </Container>
       </header>
-      <Container>
-        <Outlet />
-      </Container>
-      <footer>
+      <main className={s.main}>
+        <Container>
+          <Outlet />
+        </Container>
+      </main>
+      <footer className={s.footer}>
         <Container>
           <Footer />
         </Container>
