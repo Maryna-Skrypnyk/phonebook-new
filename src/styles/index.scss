@@ -12,13 +12,33 @@ body {
   // -moz-osx-font-smoothing: grayscale;
 
   font-family: $primary-font;
-  background-color: $img-background-yellow-color;
+  // background-color: $img-background-yellow-color;
   background-image: url(../assets/images/bg-y-b.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
   color: $text-color;
   line-height: 1.5;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+    // border: 0.2px solid $secondary-gray-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    // background-color: $locale-btn-color;
+    background: linear-gradient(
+      to bottom,
+      $locale-btn-color,
+      $img-background-blue-color
+    );
+    border-radius: 8px;
+    border: 0.5px solid $primary-gray-color;
+  }
 }
 
 code {
