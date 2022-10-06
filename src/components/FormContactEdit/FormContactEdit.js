@@ -38,9 +38,6 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
       return;
     }
 
-    if (currentContact.name === name && currentContact.number === number) {
-      return;
-    }
     dispatch(
       contactsOperations.updateContact(currentContact.id, { name, number }),
     );
