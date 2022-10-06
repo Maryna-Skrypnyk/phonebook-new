@@ -33,5 +33,16 @@
   }
 }
 
-// //
-// fill="#3dd9eb"
+.iconEdit {
+  fill: $primary-btn-bg-color;
+  @include transition(fill);
+
+  &:hover {
+    fill: $secondary-icon-fill-color;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}

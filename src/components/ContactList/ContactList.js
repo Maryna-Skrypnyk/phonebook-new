@@ -9,7 +9,6 @@ import s from './ContactList.module.scss';
 
 const ContactList = ({ localization }) => {
   const { noContacts, noFilterContacts } = localization.localizedContent;
-
   // const contacts = useSelector(contactsSelectors.getVisibleContactsSortByName);
 
   const allContacts = useSelector(contactsSelectors.getContacts);
@@ -47,11 +46,13 @@ const ContactList = ({ localization }) => {
           {noContacts}
         </motion.p>
       )}
+
       <ul className={s.contactList}>
         <AnimatePresence>
           {filterContacts?.map(({ name, number, id }) => (
             <ContactItem
               key={id}
+              id={id}
               name={name}
               number={number}
               // onDeleteContact={() => dispatch(deleteContact(id))}

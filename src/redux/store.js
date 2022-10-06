@@ -22,19 +22,19 @@ const middleware = [
   logger,
 ];
 
-const contactsPersistConfig = {
-  key: 'contacts',
-  storage,
-  blacklist: ['filter'],
-};
+// const contactsPersistConfig = {
+//   key: 'contacts',
+//   storage,
+//   blacklist: ['filter'],
+// };
 
 export const store = configureStore({
   reducer: {
-    contacts: persistReducer(contactsPersistConfig, contactsReducer),
-    // contacts: contactsReducer,
+    // contacts: persistReducer(contactsPersistConfig, contactsReducer),
+    contacts: contactsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);

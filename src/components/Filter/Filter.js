@@ -9,7 +9,7 @@ import s from './Filter.module.scss';
 const Filter = ({ localization }) => {
   const filterInputId = uuidv4();
   const { titleFilter, filterPlaceholder } = localization.localizedContent;
-  const value = useSelector(contactsSelectors.getContactsFilter);
+  const value = useSelector(contactsSelectors.getFilter);
   const contacts = useSelector(contactsSelectors.getContacts);
   const dispatch = useDispatch();
 

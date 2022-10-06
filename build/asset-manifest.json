@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.7d9db1ab.css",
-    "main.js": "/static/js/main.c55517d1.js",
-    "home-page.css": "/static/css/home-page.c1ee075f.chunk.css",
+    "main.css": "/static/css/main.d24f4fc0.css",
+    "main.js": "/static/js/main.41463f25.js",
+    "home-page.css": "/static/css/home-page.b3ef065e.chunk.css",
     "home-page.js": "/static/js/home-page.6bb99fd4.chunk.js",
-    "contacts-page.css": "/static/css/contacts-page.138df505.chunk.css",
-    "contacts-page.js": "/static/js/contacts-page.34172527.chunk.js",
+    "contacts-page.css": "/static/css/contacts-page.b02c76ba.chunk.css",
+    "contacts-page.js": "/static/js/contacts-page.bc3d1d63.chunk.js",
     "authMenuItem-mui.js": "/static/js/authMenuItem-mui.a2277fa1.chunk.js",
     "buttonUser-mui.js": "/static/js/buttonUser-mui.8ec4bb39.chunk.js",
     "menuUser-mui.js": "/static/js/menuUser-mui.707fcf18.chunk.js",
     "avatar-mui.js": "/static/js/avatar-mui.fa15a1f2.chunk.js",
+    "static/js/91.33cbfc60.chunk.js": "/static/js/91.33cbfc60.chunk.js",
     "static/media/Circe-Bold.woff": "/static/media/Circe-Bold.30401a85fd2d86b1c587.woff",
     "static/media/Circe-Regular.woff": "/static/media/Circe-Regular.0f1760c600b59a347aab.woff",
     "static/media/Poppins-Regular.woff": "/static/media/Poppins-Regular.0cb0e08604d9c19c5c38.woff",
@@ -36,17 +37,18 @@
     "static/media/user.svg": "/static/media/user.e309166cb56fc3ab8026cfa8f716e56d.svg",
     "static/media/email.svg": "/static/media/email.cd2402e9d7cd19e98db90f9235e4576f.svg",
     "static/media/add.svg": "/static/media/add.b32f3a092015d7a228e03084a624cb0b.svg",
-    "main.7d9db1ab.css.map": "/static/css/main.7d9db1ab.css.map",
-    "main.c55517d1.js.map": "/static/js/main.c55517d1.js.map",
-    "home-page.c1ee075f.chunk.css.map": "/static/css/home-page.c1ee075f.chunk.css.map",
+    "main.d24f4fc0.css.map": "/static/css/main.d24f4fc0.css.map",
+    "main.41463f25.js.map": "/static/js/main.41463f25.js.map",
+    "home-page.b3ef065e.chunk.css.map": "/static/css/home-page.b3ef065e.chunk.css.map",
     "home-page.6bb99fd4.chunk.js.map": "/static/js/home-page.6bb99fd4.chunk.js.map",
-    "contacts-page.138df505.chunk.css.map": "/static/css/contacts-page.138df505.chunk.css.map",
-    "contacts-page.34172527.chunk.js.map": "/static/js/contacts-page.34172527.chunk.js.map",
+    "contacts-page.b02c76ba.chunk.css.map": "/static/css/contacts-page.b02c76ba.chunk.css.map",
+    "contacts-page.bc3d1d63.chunk.js.map": "/static/js/contacts-page.bc3d1d63.chunk.js.map",
     "authMenuItem-mui.a2277fa1.chunk.js.map": "/static/js/authMenuItem-mui.a2277fa1.chunk.js.map",
-    "avatar-mui.fa15a1f2.chunk.js.map": "/static/js/avatar-mui.fa15a1f2.chunk.js.map"
+    "avatar-mui.fa15a1f2.chunk.js.map": "/static/js/avatar-mui.fa15a1f2.chunk.js.map",
+    "91.33cbfc60.chunk.js.map": "/static/js/91.33cbfc60.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d9db1ab.css",
-    "static/js/main.c55517d1.js"
+    "static/css/main.d24f4fc0.css",
+    "static/js/main.41463f25.js"
   ]
 }

@@ -8,6 +8,7 @@
   "secondaryTitle": "Contacts",
 
   "contentBtnAdd": "Add contact",
+  "contentBtnEdit": "Update contact",
   "titleFilter": "Find contacts by name",
   "filterPlaceholder": "Enter contact name",
   "noContacts": "There are no contacts in the list",

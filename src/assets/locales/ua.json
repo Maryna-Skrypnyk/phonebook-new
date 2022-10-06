@@ -8,6 +8,7 @@
   "secondaryTitle": "Контакти",
 
   "contentBtnAdd": "Додати контакт",
+  "contentBtnEdit": "Оновити контакт",
   "titleFilter": "Пошук контактів по імені",
   "filterPlaceholder": "Введіть ім'я контакту",
   "noContacts": "Відсутні контакти в списку",
