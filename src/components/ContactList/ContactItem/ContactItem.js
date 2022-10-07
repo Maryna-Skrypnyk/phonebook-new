@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../../Modal';
-import FormContactEdit from '../../FormContactEdit';
+import FormContactEdit from '../../FormsContact/FormContactEdit';
 import ButtonIcon from '../../ButtonIcon';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactComponent as DeleteIcon } from '../../../assets/images/icons/delete2.svg';

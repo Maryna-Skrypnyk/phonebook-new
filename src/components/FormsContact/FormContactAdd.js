@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { changeFilter } from '../../redux/contacts/contacts-actions';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import withLocalization from '../hoc/withLocalization';
 import ButtonIconWithContent from '../ButtonIconWithContent/ButtonIconWithContent';
 import * as Yup from 'yup';
 import { makeToastWarn } from '../Notification/notification';
-import s from './FormContactEdit.module.scss';
+import s from './FormsContact.module.scss';
 
-const FormContactEdit = ({ saveContact, localization, id }) => {
+const FormContactAdd = ({ saveContact, localization }) => {
   const {
     isContact,
-    contentBtnEdit,
+    contentBtnAdd,
     namePlaceholder,
     phoneNumber,
     required,
@@ -24,25 +25,27 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
   } = localization.localizedContent;
 
   const contacts = useSelector(contactsSelectors.getContacts);
+  const filter = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
-  const currentContact = contacts.find(contact => contact.id === id);
 
   const onHandleSubmit = ({ name, number }, { resetForm }) => {
-    const notCurrentContacts = contacts.filter(contact => contact.id !== id);
-    if (notCurrentContacts.find(contact => contact.name === name)) {
+    if (contacts.find(contact => contact.name === name)) {
       makeToastWarn(`${namePlaceholder} "${name}" ${isContact}`, 'warn');
       return;
     }
-    if (notCurrentContacts.find(contact => contact.number === number)) {
+
+    if (contacts.find(contact => contact.number === number)) {
       makeToastWarn(`${phoneNumber} "${number}" ${isContact}`, 'warn');
       return;
     }
 
-    dispatch(
-      contactsOperations.updateContact(currentContact.id, { name, number }),
-    );
+    dispatch(contactsOperations.addContact({ name, number }));
     resetForm({ name: '', number: '' });
     saveContact();
+
+    if (filter.length > 0) {
+      dispatch(changeFilter(''));
+    }
   };
 
   const validationSchema = Yup.object({
@@ -61,10 +64,7 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
 
   return (
     <Formik
-      initialValues={{
-        name: currentContact.name,
-        number: currentContact.number,
-      }}
+      initialValues={{ name: '', number: '' }}
       validationSchema={validationSchema}
       onSubmit={onHandleSubmit}
       validateOnBlur={false}
@@ -103,15 +103,15 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
           btnClass="button"
           aria-label="Add contact"
         >
-          {contentBtnEdit}
+          {contentBtnAdd}
         </ButtonIconWithContent>
       </Form>
     </Formik>
   );
 };
 
-FormContactEdit.propTypes = {
+FormContactAdd.propTypes = {
   saveContact: PropTypes.func.isRequired,
 };
 
-export default withLocalization(FormContactEdit);
+export default withLocalization(FormContactAdd);

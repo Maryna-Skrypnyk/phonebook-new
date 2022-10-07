@@ -166,7 +166,7 @@ import Title from '../../components/Title';
 import withLocalization from '../../components/hoc/withLocalization';
 import PageWrapper from '../../components/PageWrapper';
 import { AnimatePresence } from 'framer-motion';
-import FormContactAdd from '../../components/FormContactAdd';
+import FormContactAdd from '../../components/FormsContact/FormContactAdd';
 import Modal from '../../components/Modal';
 import ContactList from '../../components/ContactList';
 import Filter from '../../components/Filter';
