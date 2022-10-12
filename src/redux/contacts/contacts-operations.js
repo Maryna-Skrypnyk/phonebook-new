@@ -15,7 +15,7 @@ import {
 } from './contacts-actions';
 
 const API_KEY = '633db86a7e19b1782914cdf4';
-axios.defaults.baseURL = `https://${API_KEY}.mockapi.io/`; // server
+axios.defaults.baseURL = `https://${API_KEY}.mockapi.io`; // server
 
 // axios.defaults.baseURL = 'http://localhost:3000'; // local server
 

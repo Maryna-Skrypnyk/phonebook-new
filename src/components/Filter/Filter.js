@@ -1,7 +1,6 @@
 import withLocalization from '../hoc/withLocalization';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/contacts/contacts-actions';
-import { contactsSelectors } from '../../redux/contacts';
+import { contactsSelectors, changeFilter } from '../../redux/contacts';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import s from './Filter.module.scss';

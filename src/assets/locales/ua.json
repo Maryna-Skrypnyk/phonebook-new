@@ -32,7 +32,7 @@
   "phoneNumber": "Номер телефону",
   "emailPlaceholder": "Електронна пошта",
   "passwordPlaceholder": "Пароль",
-  "confirmPasswordPlaceholder": "Повторіть пароль",
+  "confirmPasswordPlaceholder": "Підтвердіть пароль",
 
   "required": "поле обов'язкове",
   "notSpaces": "не може включати пробіли напочатку та вкінці",

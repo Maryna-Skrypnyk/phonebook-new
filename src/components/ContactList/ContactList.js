@@ -9,9 +9,9 @@ import s from './ContactList.module.scss';
 
 const ContactList = ({ localization }) => {
   const { noContacts, noFilterContacts } = localization.localizedContent;
-  // const contacts = useSelector(contactsSelectors.getVisibleContactsSortByName);
 
   const allContacts = useSelector(contactsSelectors.getContacts);
+
   const filterContacts = useSelector(
     contactsSelectors.getVisibleContactsSortByName,
   );
@@ -50,7 +50,7 @@ const ContactList = ({ localization }) => {
 
       <ul className={s.contactList}>
         <AnimatePresence>
-          {filterContacts?.map(({ name, number, id }) => (
+          {filterContacts.map(({ name, number, id }) => (
             <ContactItem
               key={id}
               id={id}

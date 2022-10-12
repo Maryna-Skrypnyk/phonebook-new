@@ -32,7 +32,7 @@
   "phoneNumber": "Phone number",
   "emailPlaceholder": "Email",
   "passwordPlaceholder": "Password",
-  "confirmPasswordPlaceholder": "Repeat password",
+  "confirmPasswordPlaceholder": "Confirm password",
 
   "required": "field is required",
   "notSpaces": "cannot include leading and trailing spaces",
