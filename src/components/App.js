@@ -1,5 +1,7 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from '../redux_thunk/auth';
 import LocalizationContext from '../context/localization';
 import PrivateRoute from './hoc/routes/PrivateRoute';
 import PublicRoute from './hoc/routes/PublicRoute';
@@ -30,7 +32,16 @@ const PhonebookPage = lazy(() =>
 );
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(authSelectors.getIsRefreshing);
+
+  useEffect(() => {
+    dispatch(authOperations.refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Spinner />
+  ) : (
     <Layout>
       <LocalizationContext>
         <ScrollToUp />
@@ -40,39 +51,69 @@ const App = () => {
               <Route
                 index
                 element={
-                  <PublicRoute>
-                    <HomePage />
-                  </PublicRoute>
+                  // <PublicRoute restricted>
+                  <HomePage />
+                  // </PublicRoute>
                 }
               />
 
-              <Route
+              {/* <Route
                 path="signup"
                 element={
-                  <PublicRoute>
+                  <PublicRoute restricted>
                     <RegistrationPage />
                   </PublicRoute>
                 }
-              />
+              /> */}
 
               <Route
-                path="login"
+                path="/signup"
                 element={
-                  <PublicRoute>
-                    <LoginPage />
-                  </PublicRoute>
+                  <PublicRoute
+                    redirectTo="/contacts"
+                    component={<RegistrationPage />}
+                  />
                 }
               />
 
+              {/* <Route
+                path="login"
+                element={
+                  <PublicRoute restricted>
+                    <LoginPage />
+                  </PublicRoute>
+                }
+              /> */}
+
               <Route
+                path="/login"
+                element={
+                  <PublicRoute
+                    redirectTo="/contacts"
+                    component={<LoginPage />}
+                  />
+                }
+              />
+
+              {/* <Route
                 path="contacts"
                 element={
                   <PrivateRoute>
                     <PhonebookPage />
                   </PrivateRoute>
                 }
+              /> */}
+
+              <Route
+                path="/contacts"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<PhonebookPage />}
+                  />
+                }
               />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
             </Route>
           </Routes>
         </Suspense>

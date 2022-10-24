@@ -1,11 +1,12 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import authOperations from '../../../redux/auth/auth-operations';
-// import authSelectors from '../../../redux/auth/auth-selectors';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import { Formik, Form } from 'formik';
 import withLocalization from '../../hoc/withLocalization';
 import TextFieldForm from '../TextFieldForm';
 import * as Yup from 'yup';
-// import Spinner from '../../Spinner';
+import Spinner from '../../Spinner';
+import routes from '../../../assets/routes';
 
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import { ReactComponent as IconEmail } from '../../../assets/images/icons/email.svg';
@@ -15,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import s from './LoginForm.module.scss';
 
 const LoginForm = ({ localization }) => {
+  const navigate = useNavigate();
   const {
     logIn,
     required,
@@ -24,8 +26,10 @@ const LoginForm = ({ localization }) => {
     minCharacterNumber,
     maxCharacterNumber,
   } = localization.localizedContent;
-  // const dispatch = useDispatch();
-  // const isLoading = true;
+  const dispatch = useDispatch();
+  // const isLoading = useSelector(authSelectors.getIsRefreshing);
+
+  const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
 
   const validationsSchema = Yup.object().shape({
     email: Yup.string(emailPlaceholder).email(notValid).required(required),
@@ -36,8 +40,11 @@ const LoginForm = ({ localization }) => {
   });
 
   const handleSubmit = ({ email, password }) => {
-    // e.preventDefault();
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.login({ email, password }));
+    if (!email || !password) return;
+    // console.log({ email, password });
+    // resetForm({ email: '', password: '' });
+    goToPhonebookPage();
   };
 
   return (

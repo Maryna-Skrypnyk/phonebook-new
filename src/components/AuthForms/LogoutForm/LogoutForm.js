@@ -1,18 +1,15 @@
 import PropTypes from 'prop-types';
 import withLocalization from '../../hoc/withLocalization';
 import Spinner from '../../Spinner';
-// import { useDispatch, useSelector } from 'react-redux';
-// import authOperations from '../../../redux/auth/auth-operations';
-// import authSelectors from '../../../redux/auth/auth-selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import s from './LogoutForm.module.scss';
 
 const LogoutForm = ({ onClose, localization }) => {
   const { confirmLogOut, actYes, actNo } = localization.localizedContent;
-  // const dispatch = useDispatch();
-  // const isLoading = useSelector(authSelectors.getLoading);
-
-  const isLoading = false; // тимчасово
+  const dispatch = useDispatch();
+  // const isLoading = useSelector(authSelectors.getIsRefreshing);
 
   const handleClickCancel = e => {
     if (e.currentTarget === e.target) {
@@ -21,7 +18,7 @@ const LogoutForm = ({ onClose, localization }) => {
   };
 
   const handleClickLogout = () => {
-    // dispatch(authOperations.logOut());
+    dispatch(authOperations.logout());
     onClose();
   };
 
@@ -46,7 +43,7 @@ const LogoutForm = ({ onClose, localization }) => {
         </ButtonIconWithContent>
       </div>
 
-      {isLoading && <Spinner />}
+      {/* {isLoading && <Spinner />} */}
     </div>
   );
 };

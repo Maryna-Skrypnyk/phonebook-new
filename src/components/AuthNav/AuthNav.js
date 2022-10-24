@@ -35,14 +35,14 @@ import { NavLink } from 'react-router-dom';
 import withLocalization from '../hoc/withLocalization';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
-// import MenuItem from '@mui/material/MenuItem';
+import MenuItem from '@mui/material/MenuItem';
 import { ReactComponent as AuthIcon } from '../../assets/images/icons/auth_icon.svg';
 import { styled } from '@mui/material/styles';
 import s from './AuthNav.module.scss';
 
-const MenuItem = lazy(() =>
-  import('@mui/material/MenuItem' /* webpackChunkName: "authMenuItem-mui" */),
-);
+// const MenuItem = lazy(() =>
+//   import('@mui/material/MenuItem' /* webpackChunkName: "authMenuItem-mui" */),
+// );
 
 const MyMenu = styled(Menu)({
   ul: {
@@ -72,8 +72,8 @@ const AuthNav = ({ localization }) => {
   const setActive = ({ isActive }) => (isActive ? s.navLinkActive : s.navLink);
 
   const navItemsAuth = [
-    { id: '1', href: 'login', text: logInPage },
-    { id: '2', href: 'signup', text: signUpPage },
+    { id: '1', href: '/login', text: logInPage },
+    { id: '2', href: '/signup', text: signUpPage },
   ];
 
   const [anchorEl, setAnchorEl] = useState(null);

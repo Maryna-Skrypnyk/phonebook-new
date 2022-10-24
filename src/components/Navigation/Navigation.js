@@ -1,15 +1,17 @@
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux_thunk/auth';
 import withLocalization from '../hoc/withLocalization';
 import s from './Navigation.module.scss';
 
 const Navigation = ({ localization }) => {
   const { menuHome, menuContacts } = localization.localizedContent;
   const setActive = ({ isActive }) => (isActive ? s.navLinkActive : s.navLink);
-  const isLoggedIn = true; // тимчасово
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const navItems = [
     { id: '1', href: '/', text: menuHome, loginStatus: true },
-    { id: '2', href: 'contacts', text: menuContacts, loginStatus: isLoggedIn },
+    { id: '2', href: '/contacts', text: menuContacts, loginStatus: isLoggedIn },
   ];
 
   return (

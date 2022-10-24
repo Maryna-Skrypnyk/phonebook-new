@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { contactsOperations, contactsSelectors } from '../../redux/contacts';
+import {
+  contactsOperations,
+  contactsSelectors,
+} from '../../redux_thunk/contacts';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import withLocalization from '../hoc/withLocalization';
 import ButtonIconWithContent from '../ButtonIconWithContent/ButtonIconWithContent';

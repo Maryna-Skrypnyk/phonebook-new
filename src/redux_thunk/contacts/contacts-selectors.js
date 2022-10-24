@@ -1,11 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const getContacts = state => state.contacts.items;
-export const getFilter = state => state.contacts.filter;
-export const getLoading = state => state.contacts.isLoading;
+const getContacts = state => state.contacts.items;
+const getFilter = state => state.contacts.filter;
+const getLoading = state => state.contacts.isLoading;
 
 // через createSelector
-export const getVisibleContactsSortByName = createSelector(
+const getVisibleContactsSortByName = createSelector(
   [getContacts, getFilter],
   (allContacts, filter) => {
     const normalizedFilter = filter.toLowerCase();
@@ -27,6 +27,15 @@ export const getVisibleContactsSortByName = createSelector(
     return visibleContactsSortByName;
   },
 );
+
+const contactsSelectors = {
+  getContacts,
+  getFilter,
+  getLoading,
+  getVisibleContactsSortByName,
+};
+
+export default contactsSelectors;
 
 // без createSelector
 // export const getVisibleContactsSortByName = state => {

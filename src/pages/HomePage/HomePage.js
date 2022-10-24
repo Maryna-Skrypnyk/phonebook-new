@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import withLocalization from '../../components/hoc/withLocalization';
+import { authSelectors } from '../../redux_thunk/auth';
 import PageWrapper from '../../components/PageWrapper';
 import Title from '../../components/Title';
 import { ReactComponent as ImgHome } from '../../assets/images/phone-book.svg';
@@ -20,6 +22,8 @@ const HomePage = ({ localization }) => {
     // outAppAction,
   } = localization.localizedContent;
 
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
   return (
     <PageWrapper>
       <Title primaryTitle={greeting} titleClass="titleGreeting">
@@ -36,29 +40,35 @@ const HomePage = ({ localization }) => {
         </span> */}
       </p>
 
-      {/* {isLoggedIn && ( */}
-      {/* <p className={s.iconPhonebookAct}>
-        {actionPress} <span className={s.act}>{logOut}</span> {outAppAction}.
-      </p> */}
-      {/* )} */}
+      {/* {isLoggedIn && (
+        <p className={s.iconPhonebookAct}>
+          {actionPress}{' '}
+          <span className={s.act}>
+            <Link to={'logout'} className={s.replaceAuthLink}>
+              {logOut}
+            </Link>
+          </span>
+          {outAppAction}.
+        </p>
+      )} */}
 
-      {/* {!isLoggedIn && ( */}
-      <p className={s.iconPhonebookAct}>
-        {actionPress}{' '}
-        <span className={s.act}>
-          <Link to={'signup'} className={s.replaceAuthLink}>
-            {signUp}
-          </Link>
-        </span>{' '}
-        /{' '}
-        <span className={s.act}>
-          <Link to={'login'} className={s.replaceAuthLink}>
-            {logIn}
-          </Link>
-        </span>{' '}
-        {appAction}.
-      </p>
-      {/* )} */}
+      {!isLoggedIn && (
+        <p className={s.iconPhonebookAct}>
+          {actionPress}{' '}
+          <span className={s.act}>
+            <Link to={'signup'} className={s.replaceAuthLink}>
+              {signUp}
+            </Link>
+          </span>{' '}
+          /{' '}
+          <span className={s.act}>
+            <Link to={'login'} className={s.replaceAuthLink}>
+              {logIn}
+            </Link>
+          </span>{' '}
+          {appAction}.
+        </p>
+      )}
 
       <AnimatePresence>
         <motion.div

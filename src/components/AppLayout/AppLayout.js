@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux_thunk/auth';
 import Navigation from '../Navigation';
 import AuthNav from '../AuthNav';
 import Container from '../Container';
@@ -14,7 +16,7 @@ import s from './AppLayout.module.scss';
 
 const AppLayout = () => {
   const [showModal, setShowModal] = useState(false);
-  const isLoggedIn = false; // тимчасово
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const toggleModal = () => {
     setShowModal(!showModal);

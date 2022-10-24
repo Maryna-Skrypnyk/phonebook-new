@@ -1,6 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { contactsOperations, contactsSelectors } from '../../redux/contacts';
+import {
+  contactsOperations,
+  contactsSelectors,
+} from '../../redux_thunk/contacts';
 import Spinner from '../Spinner';
 import ContactItem from './ContactItem';
 import withLocalization from '../hoc/withLocalization';
@@ -9,15 +13,13 @@ import s from './ContactList.module.scss';
 
 const ContactList = ({ localization }) => {
   const { noContacts, noFilterContacts } = localization.localizedContent;
+  const dispatch = useDispatch();
 
   const allContacts = useSelector(contactsSelectors.getContacts);
-
   const filterContacts = useSelector(
     contactsSelectors.getVisibleContactsSortByName,
   );
   const isLoading = useSelector(contactsSelectors.getLoading);
-
-  const dispatch = useDispatch();
 
   useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
 
@@ -42,7 +44,7 @@ const ContactList = ({ localization }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ delay: 1 }}
+          // transition={{ delay: 1 }}
         >
           {noContacts}
         </motion.p>

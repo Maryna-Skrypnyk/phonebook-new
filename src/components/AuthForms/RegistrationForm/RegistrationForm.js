@@ -1,15 +1,14 @@
 import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import authOperations from '../../../redux/auth/auth-operations';
-// import authSelectors from '../../../redux/auth/auth-selectors';
+import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import { Formik, Form } from 'formik';
 import withLocalization from '../../hoc/withLocalization';
 import PasswordStrenghtMeter from './PasswordStrenghtMeter';
 import TextFieldForm from '../TextFieldForm';
 import * as Yup from 'yup';
 import routes from '../../../assets/routes';
-// import Spinner from '../../Spinner';
+import Spinner from '../../Spinner';
 
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import { ReactComponent as IconEmail } from '../../../assets/images/icons/email.svg';
@@ -36,10 +35,10 @@ const RegistrationForm = ({ localization }) => {
     confirmPasswordPlaceholder,
     notConfirmPassword,
   } = localization.localizedContent;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [password, setPassword] = useState('');
-  // const isLoading = true;
+  // const isLoading = useSelector(authSelectors.getIsRefreshing);
 
   const validationsSchema = Yup.object().shape({
     name: Yup.string(namePlaceholder)
@@ -58,21 +57,22 @@ const RegistrationForm = ({ localization }) => {
       .required(required),
   });
 
-  const handleSubmit = ({ name, email, password }) => {
-    // e.preventDefault();
-    // dispatch(
-    //   authOperations.register({
-    //     email,
-    //     password,
-    //     name,
-    //   }),
-    // );
-    if (!name || !email || !password) return;
-    console.log({ name, email, password });
-    goToLoginPage();
-  };
+  // const goToLoginPage = () => navigate(routes.login, { replace: true });
+  const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
 
-  const goToLoginPage = () => navigate(routes.login, { replace: true });
+  const handleSubmit = ({ name, email, password }) => {
+    dispatch(
+      authOperations.register({
+        name,
+        email,
+        password,
+      }),
+    );
+    if (!name || !email || !password) return;
+    // console.log({ name, email, password });
+    // resetForm({ name: '', email: '', password: '' });
+    goToPhonebookPage();
+  };
 
   return (
     <Formik
