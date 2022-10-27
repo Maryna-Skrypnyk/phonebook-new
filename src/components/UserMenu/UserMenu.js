@@ -59,6 +59,7 @@ const MyMenu = styled(Menu)({
 
 const UserMenu = ({ onClick, localization }) => {
   const { logOut } = localization.localizedContent;
+  const name = useSelector(authSelectors.getUserName);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -70,8 +71,6 @@ const UserMenu = ({ onClick, localization }) => {
   const handleClose = e => {
     setAnchorEl(null);
   };
-
-  const name = useSelector(authSelectors.getUserName);
 
   const initials =
     name.split(' ').length === 2 && name.split(' ')[1][0]
@@ -86,7 +85,7 @@ const UserMenu = ({ onClick, localization }) => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        // style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
+        style={{ marginLeft: '10px' }}
       >
         <MyAvatar
           alt={name}
@@ -97,6 +96,7 @@ const UserMenu = ({ onClick, localization }) => {
       </Button>
 
       <MyMenu
+        style={{ top: '-8px' }}
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         anchorEl={anchorEl}

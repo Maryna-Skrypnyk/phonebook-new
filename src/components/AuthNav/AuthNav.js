@@ -64,6 +64,7 @@ const AuthNav = ({ localization }) => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         // style={{ color: open ? '#F6AB0E' : '#fff' }}
+        style={{ marginLeft: '10px' }}
       >
         <AuthIcon width={40} height={40} className={s.authIcon} />
       </MyButton>
@@ -81,6 +82,7 @@ const AuthNav = ({ localization }) => {
           vertical: 'top',
           horizontal: 'left',
         }}
+        style={{ top: '-8px' }}
       >
         {navItemsAuth.map(({ href, text }) => (
           <MenuItem
