@@ -15,7 +15,6 @@ const Modal = ({ onClose, children }) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
-    // document.body.classList.add('bg-black');
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
