@@ -33,13 +33,13 @@ const PhonebookPage = lazy(() =>
 
 const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(authSelectors.getIsRefreshing);
+  const isLoading = useSelector(authSelectors.getLoading);
 
   useEffect(() => {
     dispatch(authOperations.refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
+  return isLoading ? (
     <Spinner />
   ) : (
     <Layout>
@@ -57,17 +57,8 @@ const App = () => {
                 }
               />
 
-              {/* <Route
-                path="signup"
-                element={
-                  <PublicRoute restricted>
-                    <RegistrationPage />
-                  </PublicRoute>
-                }
-              /> */}
-
               <Route
-                path="/signup"
+                path="signup"
                 element={
                   <PublicRoute
                     redirectTo="/contacts"
@@ -76,17 +67,8 @@ const App = () => {
                 }
               />
 
-              {/* <Route
-                path="login"
-                element={
-                  <PublicRoute restricted>
-                    <LoginPage />
-                  </PublicRoute>
-                }
-              /> */}
-
               <Route
-                path="/login"
+                path="login"
                 element={
                   <PublicRoute
                     redirectTo="/contacts"
@@ -95,17 +77,8 @@ const App = () => {
                 }
               />
 
-              {/* <Route
-                path="contacts"
-                element={
-                  <PrivateRoute>
-                    <PhonebookPage />
-                  </PrivateRoute>
-                }
-              /> */}
-
               <Route
-                path="/contacts"
+                path="contacts"
                 element={
                   <PrivateRoute
                     redirectTo="/login"
@@ -113,7 +86,13 @@ const App = () => {
                   />
                 }
               />
-              {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+
+              <Route
+                path="/contacts/*"
+                element={<Navigate to="/contacts" replace />}
+              />
+
+              <Route path="/*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>
         </Suspense>

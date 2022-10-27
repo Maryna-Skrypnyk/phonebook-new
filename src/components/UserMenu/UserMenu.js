@@ -5,25 +5,25 @@ import { authSelectors } from '../../redux_thunk/auth';
 import withLocalization from '../hoc/withLocalization';
 import ButtonIcon from '../ButtonIcon';
 import { ReactComponent as Logout } from '../../assets/images/icons/logout.svg';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Avatar from '@mui/material/Avatar';
+// import Button from '@mui/material/Button';
+// import Menu from '@mui/material/Menu';
+// import MenuItem from '@mui/material/MenuItem';
+// import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
 import s from './UserMenu.module.scss';
 
-// const Button = lazy(() =>
-//   import('@mui/material/Button' /* webpackChunkName: "buttonUser-mui" */),
-// );
-// const Menu = lazy(() =>
-//   import('@mui/material/Menu' /* webpackChunkName: "menuUser-mui" */),
-// );
-// const MenuItem = lazy(() =>
-//   import('@mui/material/MenuItem' /* webpackChunkName: "menuItemUser-mui" */),
-// );
-// const Avatar = lazy(() =>
-//   import('@mui/material/Avatar' /* webpackChunkName: "avatar-mui" */),
-// );
+const Button = lazy(() =>
+  import('@mui/material/Button' /* webpackChunkName: "buttonUser-mui" */),
+);
+const Menu = lazy(() =>
+  import('@mui/material/Menu' /* webpackChunkName: "menuUser-mui" */),
+);
+const MenuItem = lazy(() =>
+  import('@mui/material/MenuItem' /* webpackChunkName: "menuItemUser-mui" */),
+);
+const Avatar = lazy(() =>
+  import('@mui/material/Avatar' /* webpackChunkName: "avatar-mui" */),
+);
 
 const MyAvatar = styled(Avatar)({
   background: '#F6AB0E',

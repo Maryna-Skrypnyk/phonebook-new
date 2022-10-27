@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -21,7 +20,9 @@ const ContactList = ({ localization }) => {
   );
   const isLoading = useSelector(contactsSelectors.getLoading);
 
-  useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
+  useEffect(() => {
+    dispatch(contactsOperations.fetchContacts());
+  }, [dispatch]);
 
   const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 

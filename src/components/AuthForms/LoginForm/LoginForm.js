@@ -27,7 +27,7 @@ const LoginForm = ({ localization }) => {
     maxCharacterNumber,
   } = localization.localizedContent;
   const dispatch = useDispatch();
-  // const isLoading = useSelector(authSelectors.getIsRefreshing);
+  const isLoading = useSelector(authSelectors.getLoading);
 
   const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
 
@@ -40,8 +40,9 @@ const LoginForm = ({ localization }) => {
   });
 
   const handleSubmit = ({ email, password }) => {
-    dispatch(authOperations.login({ email, password }));
     if (!email || !password) return;
+    dispatch(authOperations.login({ email, password }));
+
     // console.log({ email, password });
     // resetForm({ email: '', password: '' });
     goToPhonebookPage();
@@ -107,7 +108,7 @@ const LoginForm = ({ localization }) => {
             {logIn}
           </ButtonIconWithContent>
 
-          {/* {isLoading && <Spinner />} */}
+          {isLoading && <Spinner />}
         </Form>
       )}
     </Formik>

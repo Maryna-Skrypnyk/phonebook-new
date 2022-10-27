@@ -31,7 +31,7 @@ const FormContactAdd = ({ saveContact, localization }) => {
   const filter = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
 
-  const onHandleSubmit = ({ name, number }, { resetForm }) => {
+  const onHandleSubmit = ({ name, number }) => {
     if (contacts.find(contact => contact.name === name)) {
       makeToastWarn(`${namePlaceholder} "${name}" ${isContact}`, 'warn');
       return;
@@ -43,7 +43,7 @@ const FormContactAdd = ({ saveContact, localization }) => {
     }
 
     dispatch(contactsOperations.addContact({ name, number }));
-    resetForm({ name: '', number: '' });
+    // resetForm({ name: '', number: '' });
     saveContact();
 
     if (filter.length > 0) {

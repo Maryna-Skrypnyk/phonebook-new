@@ -6,12 +6,15 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const fetchContacts = createAsyncThunk(
+export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get('/contacts');
-      console.log('contacts ', data);
+
+      // if (response.status !== 200) {
+      //   throw new Error('Server Error!');
+      // }
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -19,11 +22,14 @@ const fetchContacts = createAsyncThunk(
   },
 );
 
-const addContact = createAsyncThunk(
+export const addContact = createAsyncThunk(
   'contacts/addContact',
   async ({ name, number }, thunkAPI) => {
     try {
       const { data } = await axios.post('/contacts', { name, number });
+      // if (response.status !== 200) {
+      //   throw new Error('Server Error!');
+      // }
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -31,11 +37,16 @@ const addContact = createAsyncThunk(
   },
 );
 
-const deleteContact = createAsyncThunk(
+export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
       const { data } = await axios.delete(`/contacts/${contactId}`);
+      // if (response.status !== 200) {
+      //   throw new Error('Server Error!');
+      // }
+      // console.log(data);
+      // thunkAPI.dispatch(deleteContact({ contactId }));
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -43,15 +54,18 @@ const deleteContact = createAsyncThunk(
   },
 );
 
-const updateContact = createAsyncThunk(
+export const updateContact = createAsyncThunk(
   'contacts/updateContact',
-  async ({ contactId, name, number }, thunkAPI) => {
+  async ([contactId, { name, number }], thunkAPI) => {
     try {
       const { data } = await axios.patch(`/contacts/${contactId}`, {
-        contactId,
         name,
         number,
       });
+
+      // if (response.status !== 200) {
+      //   throw new Error('Server Error!');
+      // }
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -59,11 +73,11 @@ const updateContact = createAsyncThunk(
   },
 );
 
-const contactsOperations = {
-  fetchContacts,
-  addContact,
-  deleteContact,
-  updateContact,
-};
+// const contactsOperations = {
+//   fetchContacts,
+//   addContact,
+//   deleteContact,
+//   updateContact,
+// };
 
-export default contactsOperations;
+// export default contactsOperations;

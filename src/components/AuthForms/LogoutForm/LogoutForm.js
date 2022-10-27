@@ -9,7 +9,7 @@ import s from './LogoutForm.module.scss';
 const LogoutForm = ({ onClose, localization }) => {
   const { confirmLogOut, actYes, actNo } = localization.localizedContent;
   const dispatch = useDispatch();
-  // const isLoading = useSelector(authSelectors.getIsRefreshing);
+  const isLoading = useSelector(authSelectors.getLoading);
 
   const handleClickCancel = e => {
     if (e.currentTarget === e.target) {
@@ -43,7 +43,7 @@ const LogoutForm = ({ onClose, localization }) => {
         </ButtonIconWithContent>
       </div>
 
-      {/* {isLoading && <Spinner />} */}
+      {isLoading && <Spinner />}
     </div>
   );
 };

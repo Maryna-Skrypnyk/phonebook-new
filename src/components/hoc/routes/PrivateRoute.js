@@ -12,10 +12,17 @@ import { authSelectors } from '../../../redux_thunk/auth';
 // export default PrivateRoute;
 
 const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+  const location = useLocation();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isRefreshing = useSelector(authSelectors.getIsRefreshing);
-  const shouldRedirect = !isLoggedIn && !isRefreshing;
-  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  const isLoading = useSelector(authSelectors.getLoading);
+
+  const shouldRedirect = !isLoggedIn && !isLoading;
+
+  return shouldRedirect ? (
+    <Navigate to={redirectTo} state={{ from: location }} />
+  ) : (
+    Component
+  );
 };
 
 export default PrivateRoute;

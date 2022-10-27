@@ -1,8 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { store, persistor } from './redux/store';
+import { store, persistor } from './redux_thunk/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import 'modern-normalize/modern-normalize.css';

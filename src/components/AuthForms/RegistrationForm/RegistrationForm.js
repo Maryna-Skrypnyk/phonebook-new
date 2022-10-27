@@ -38,7 +38,7 @@ const RegistrationForm = ({ localization }) => {
   const dispatch = useDispatch();
 
   const [password, setPassword] = useState('');
-  // const isLoading = useSelector(authSelectors.getIsRefreshing);
+  const isLoading = useSelector(authSelectors.getLoading);
 
   const validationsSchema = Yup.object().shape({
     name: Yup.string(namePlaceholder)
@@ -61,6 +61,7 @@ const RegistrationForm = ({ localization }) => {
   const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
 
   const handleSubmit = ({ name, email, password }) => {
+    if (!name || !email || !password) return;
     dispatch(
       authOperations.register({
         name,
@@ -68,9 +69,6 @@ const RegistrationForm = ({ localization }) => {
         password,
       }),
     );
-    if (!name || !email || !password) return;
-    // console.log({ name, email, password });
-    // resetForm({ name: '', email: '', password: '' });
     goToPhonebookPage();
   };
 
@@ -174,7 +172,7 @@ const RegistrationForm = ({ localization }) => {
             {signUp}
           </ButtonIconWithContent>
 
-          {/* {isLoading && <Spinner />} */}
+          {isLoading && <Spinner />}
         </Form>
       )}
     </Formik>

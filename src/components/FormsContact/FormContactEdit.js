@@ -27,10 +27,11 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
   } = localization.localizedContent;
 
   const contacts = useSelector(contactsSelectors.getContacts);
-  const dispatch = useDispatch();
   const currentContact = contacts.find(contact => contact.id === id);
+  const dispatch = useDispatch();
 
-  const onHandleSubmit = ({ name, number }, { resetForm }) => {
+  const onHandleSubmit = ({ name, number }) => {
+    // const { name, number } = fieldsContact;
     const notCurrentContacts = contacts.filter(contact => contact.id !== id);
     if (notCurrentContacts.find(contact => contact.name === name)) {
       makeToastWarn(`${namePlaceholder} "${name}" ${isContact}`, 'warn');
@@ -41,10 +42,8 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
       return;
     }
 
-    dispatch(
-      contactsOperations.updateContact(currentContact.id, { name, number }),
-    );
-    resetForm({ name: '', number: '' });
+    dispatch(contactsOperations.updateContact([id, { name, number }]));
+    // resetForm({ name: '', number: '' });
     saveContact();
   };
 
