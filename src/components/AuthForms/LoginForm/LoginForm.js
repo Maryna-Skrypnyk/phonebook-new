@@ -2,12 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import withLocalization from '../../hoc/withLocalization';
 import TextFieldForm from '../TextFieldForm';
-import * as Yup from 'yup';
 import Spinner from '../../Spinner';
 import routes from '../../../assets/routes';
-
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import { ReactComponent as IconEmail } from '../../../assets/images/icons/email.svg';
 import { ReactComponent as IconLock } from '../../../assets/images/icons/lock.svg';
@@ -42,9 +41,6 @@ const LoginForm = ({ localization }) => {
   const handleSubmit = ({ email, password }) => {
     if (!email || !password) return;
     dispatch(authOperations.login({ email, password }));
-
-    // console.log({ email, password });
-    // resetForm({ email: '', password: '' });
     goToPhonebookPage();
   };
 

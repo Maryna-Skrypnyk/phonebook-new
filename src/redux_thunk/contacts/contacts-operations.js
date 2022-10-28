@@ -11,13 +11,17 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get('/contacts');
-
-      // if (response.status !== 200) {
-      //   throw new Error('Server Error!');
-      // }
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        return thunkAPI.rejectWithValue(
+          'Missing header with authorization token.',
+        );
+      }
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue('There is no such user collection.');
+      }
+      return thunkAPI.rejectWithValue(`Server Error! ${error.message}.`);
     }
   },
 );
@@ -27,11 +31,16 @@ export const addContact = createAsyncThunk(
   async ({ name, number }, thunkAPI) => {
     try {
       const { data } = await axios.post('/contacts', { name, number });
-      // if (response.status !== 200) {
-      //   throw new Error('Server Error!');
-      // }
       return data;
     } catch (error) {
+      if (error.response.status === 400) {
+        return thunkAPI.rejectWithValue('Error creating contact.');
+      }
+      if (error.response.status === 401) {
+        return thunkAPI.rejectWithValue(
+          'Missing header with authorization token.',
+        );
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -42,14 +51,17 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const { data } = await axios.delete(`/contacts/${contactId}`);
-      // if (response.status !== 200) {
-      //   throw new Error('Server Error!');
-      // }
-      // console.log(data);
-      // thunkAPI.dispatch(deleteContact({ contactId }));
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        return thunkAPI.rejectWithValue(
+          'Missing header with authorization token.',
+        );
+      }
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue('There is no such user collection.');
+      }
+      return thunkAPI.rejectWithValue(`Server Error! ${error.message}.`);
     }
   },
 );
@@ -62,12 +74,16 @@ export const updateContact = createAsyncThunk(
         name,
         number,
       });
-
-      // if (response.status !== 200) {
-      //   throw new Error('Server Error!');
-      // }
       return data;
     } catch (error) {
+      if (error.response.status === 400) {
+        return thunkAPI.rejectWithValue('Contact update failed.');
+      }
+      if (error.response.status === 401) {
+        return thunkAPI.rejectWithValue(
+          'Missing header with authorization token.',
+        );
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   },

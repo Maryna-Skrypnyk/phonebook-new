@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import withLocalization from '../../hoc/withLocalization';
 import PasswordStrenghtMeter from './PasswordStrenghtMeter';
 import TextFieldForm from '../TextFieldForm';
-import * as Yup from 'yup';
-import routes from '../../../assets/routes';
 import Spinner from '../../Spinner';
-
+import routes from '../../../assets/routes';
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import { ReactComponent as IconEmail } from '../../../assets/images/icons/email.svg';
 import { ReactComponent as IconLock } from '../../../assets/images/icons/lock.svg';

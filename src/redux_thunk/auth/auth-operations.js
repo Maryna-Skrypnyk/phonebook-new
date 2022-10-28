@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -15,14 +14,24 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
-    console.log('credential ', credentials);
     try {
       const { data } = await axios.post('/users/signup', credentials);
       setAuthHeader(data.token);
-      // console.log('register ', data);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 400) {
+        return thunkAPI.rejectWithValue(
+          `User creation error! Try signup again. ${error.message}`,
+        );
+      }
+      if (error.response.status === 500) {
+        return thunkAPI.rejectWithValue(
+          `Server error! Try signup again later. ${error.message}`,
+        );
+      }
+      return thunkAPI.rejectWithValue(
+        `Something went wrong! Try signup again. ${error.message}.`,
+      );
     }
   },
 );
@@ -35,6 +44,9 @@ export const login = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      if (error.response.status === 400) {
+        return thunkAPI.rejectWithValue('Login error! Try login again.');
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -45,7 +57,17 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    if (error.response.status === 401) {
+      return thunkAPI.rejectWithValue(
+        'User creation error! Try signup again. Missing header with authorization token.',
+      );
+    }
+    if (error.response.status === 500) {
+      return thunkAPI.rejectWithValue('Server error! Try logout again.');
+    }
+    return thunkAPI.rejectWithValue(
+      `Something went wrong! Try logout again. ${error.message}.`,
+    );
   }
 });
 
@@ -64,7 +86,14 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        return thunkAPI.rejectWithValue(
+          'Missing authorization! Please try to login or signup.',
+        );
+      }
+      return thunkAPI.rejectWithValue(
+        `Something went wrong! Try again later. ${error.message}.`,
+      );
     }
   },
 );
