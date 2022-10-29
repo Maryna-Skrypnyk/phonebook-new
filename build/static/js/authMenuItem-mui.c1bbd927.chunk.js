@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphonebook_new=self.webpackChunkphonebook_new||[]).push([[949],{9753:function(e,n,t){t.r(n),t.d(n,{default:function(){return u.Z},getMenuItemUtilityClass:function(){return o.K},menuItemClasses:function(){return o.Z}});var u=t(5006),o=t(2320)}}]);

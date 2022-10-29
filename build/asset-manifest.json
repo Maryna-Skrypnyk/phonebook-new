@@ -1,15 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.3d333cbb.css",
-    "main.js": "/static/js/main.8369fe99.js",
+    "main.js": "/static/js/main.bd3e31e3.js",
     "home-page.css": "/static/css/home-page.f46f49ee.chunk.css",
     "home-page.js": "/static/js/home-page.3af5d8a7.chunk.js",
     "contacts-page.css": "/static/css/contacts-page.ee8550d4.chunk.css",
     "contacts-page.js": "/static/js/contacts-page.9d9f872e.chunk.js",
-    "authMenuItem-mui.js": "/static/js/authMenuItem-mui.a2277fa1.chunk.js",
-    "buttonUser-mui.js": "/static/js/buttonUser-mui.8ec4bb39.chunk.js",
-    "menuUser-mui.js": "/static/js/menuUser-mui.707fcf18.chunk.js",
-    "avatar-mui.js": "/static/js/avatar-mui.fa15a1f2.chunk.js",
+    "authMenuItem-mui.js": "/static/js/authMenuItem-mui.c1bbd927.chunk.js",
     "static/media/Circe-Bold.woff": "/static/media/Circe-Bold.30401a85fd2d86b1c587.woff",
     "static/media/Circe-Regular.woff": "/static/media/Circe-Regular.0f1760c600b59a347aab.woff",
     "static/media/Poppins-Regular.woff": "/static/media/Poppins-Regular.0cb0e08604d9c19c5c38.woff",
@@ -38,16 +35,14 @@
     "static/media/email.svg": "/static/media/email.cd2402e9d7cd19e98db90f9235e4576f.svg",
     "static/media/add.svg": "/static/media/add.b32f3a092015d7a228e03084a624cb0b.svg",
     "main.3d333cbb.css.map": "/static/css/main.3d333cbb.css.map",
-    "main.8369fe99.js.map": "/static/js/main.8369fe99.js.map",
+    "main.bd3e31e3.js.map": "/static/js/main.bd3e31e3.js.map",
     "home-page.f46f49ee.chunk.css.map": "/static/css/home-page.f46f49ee.chunk.css.map",
     "home-page.3af5d8a7.chunk.js.map": "/static/js/home-page.3af5d8a7.chunk.js.map",
     "contacts-page.ee8550d4.chunk.css.map": "/static/css/contacts-page.ee8550d4.chunk.css.map",
-    "contacts-page.9d9f872e.chunk.js.map": "/static/js/contacts-page.9d9f872e.chunk.js.map",
-    "authMenuItem-mui.a2277fa1.chunk.js.map": "/static/js/authMenuItem-mui.a2277fa1.chunk.js.map",
-    "avatar-mui.fa15a1f2.chunk.js.map": "/static/js/avatar-mui.fa15a1f2.chunk.js.map"
+    "contacts-page.9d9f872e.chunk.js.map": "/static/js/contacts-page.9d9f872e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3d333cbb.css",
-    "static/js/main.8369fe99.js"
+    "static/js/main.bd3e31e3.js"
   ]
 }
