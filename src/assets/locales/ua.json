@@ -37,7 +37,7 @@
   "required": "поле обов'язкове",
   "notSpaces": "не може включати пробіли напочатку та вкінці",
   "minCharacterName": "не менше 2 символів",
-  "maxCharacterName": "не більше 12 символів",
+  "maxCharacterName": "не більше 20 символів",
   "minCharacterNumber": "не менше 8 символів",
   "maxCharacterNumber": "не більше 18 символів",
   "notValid": "не валідне значення",

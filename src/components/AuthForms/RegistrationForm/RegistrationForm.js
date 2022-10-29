@@ -45,7 +45,7 @@ const RegistrationForm = ({ localization }) => {
       .typeError()
       .trim(notSpaces)
       .min(2, minCharacterName)
-      .max(12, maxCharacterName)
+      .max(20, maxCharacterName)
       .required(required),
     email: Yup.string(emailPlaceholder).email(notValid).required(required),
     password: Yup.string(passwordPlaceholder)

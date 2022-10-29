@@ -37,7 +37,7 @@
   "required": "field is required",
   "notSpaces": "cannot include leading and trailing spaces",
   "minCharacterName": "at least 2 character",
-  "maxCharacterName": "must be 12 characters or less",
+  "maxCharacterName": "must be 20 characters or less",
   "minCharacterNumber": "at least 8 character",
   "maxCharacterNumber": "must be 18 characters or less",
   "notValid": "not valid",

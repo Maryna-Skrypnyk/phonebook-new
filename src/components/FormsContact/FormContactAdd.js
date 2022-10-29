@@ -78,7 +78,7 @@ const FormContactAdd = ({ saveContact, localization }) => {
     name: Yup.string()
       .trim(notSpaces)
       .min(2, minCharacterName)
-      .max(12, maxCharacterName)
+      .max(20, maxCharacterName)
       .required(required),
     number: Yup.string()
       .trim(notSpaces)
