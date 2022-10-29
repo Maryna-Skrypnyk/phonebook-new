@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import withLocalization from '../../hoc/withLocalization';
 import PasswordStrenghtMeter from './PasswordStrenghtMeter';
 import TextFieldForm from '../TextFieldForm';
 import Spinner from '../../Spinner';
-import routes from '../../../assets/routes';
+// import routes from '../../../assets/routes';
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import { ReactComponent as IconEmail } from '../../../assets/images/icons/email.svg';
 import { ReactComponent as IconLock } from '../../../assets/images/icons/lock.svg';
@@ -18,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import s from './RegistrationForm.module.scss';
 
 const RegistrationForm = ({ localization }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     signUp,
     required,
@@ -57,18 +58,31 @@ const RegistrationForm = ({ localization }) => {
   });
 
   // const goToLoginPage = () => navigate(routes.login, { replace: true });
-  const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
+  // const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
 
-  const handleSubmit = ({ name, email, password }) => {
+  const handleSubmit = async ({ name, email, password }) => {
     if (!name || !email || !password) return;
-    dispatch(
+    const resultAction = await dispatch(
       authOperations.register({
         name,
         email,
         password,
       }),
     );
-    goToPhonebookPage();
+
+    if (authOperations.register.fulfilled.match(resultAction)) {
+      const dataUser = resultAction.payload.user;
+      // goToPhonebookPage();
+      toast.success(
+        `Congratulations, "${dataUser.name}"! You are successfully registered!`,
+      );
+    } else {
+      if (resultAction.payload) {
+        toast.error(resultAction.payload);
+      } else {
+        toast.error('Error! Signup failed.');
+      }
+    }
   };
 
   return (

@@ -21,12 +21,17 @@ export const register = createAsyncThunk(
     } catch (error) {
       if (error.response.status === 400) {
         return thunkAPI.rejectWithValue(
-          `User creation error! Try signup again. ${error.message}`,
+          `User creation error! Try signup again. ${error.message}.`,
+        );
+      }
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue(
+          `${error.message}. Try signup later or contact the support service.`,
         );
       }
       if (error.response.status === 500) {
         return thunkAPI.rejectWithValue(
-          `Server error! Try signup again later. ${error.message}`,
+          `Server error! Try signup again later. ${error.message}.`,
         );
       }
       return thunkAPI.rejectWithValue(
@@ -47,6 +52,12 @@ export const login = createAsyncThunk(
       if (error.response.status === 400) {
         return thunkAPI.rejectWithValue('Login error! Try login again.');
       }
+
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue(
+          'Request failed! Try login later or contact the support service.',
+        );
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -59,11 +70,16 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   } catch (error) {
     if (error.response.status === 401) {
       return thunkAPI.rejectWithValue(
-        'User creation error! Try signup again. Missing header with authorization token.',
+        'Logout error! Try again. Missing header with authorization token.',
+      );
+    }
+    if (error.response.status === 404) {
+      return thunkAPI.rejectWithValue(
+        `${error.message}. Try logout later or contact the support service.`,
       );
     }
     if (error.response.status === 500) {
-      return thunkAPI.rejectWithValue('Server error! Try logout again.');
+      return thunkAPI.rejectWithValue(`Server error! Try logout again.`);
     }
     return thunkAPI.rejectWithValue(
       `Something went wrong! Try logout again. ${error.message}.`,
@@ -89,6 +105,11 @@ export const refreshUser = createAsyncThunk(
       if (error.response.status === 401) {
         return thunkAPI.rejectWithValue(
           'Missing authorization! Please try to login or signup.',
+        );
+      }
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue(
+          `${error.message}. Try open web-app later or contact the support service.`,
         );
       }
       return thunkAPI.rejectWithValue(

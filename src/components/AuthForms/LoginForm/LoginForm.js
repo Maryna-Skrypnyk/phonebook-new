@@ -1,12 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
+import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import withLocalization from '../../hoc/withLocalization';
 import TextFieldForm from '../TextFieldForm';
 import Spinner from '../../Spinner';
-import routes from '../../../assets/routes';
+// import routes from '../../../assets/routes';
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import { ReactComponent as IconEmail } from '../../../assets/images/icons/email.svg';
 import { ReactComponent as IconLock } from '../../../assets/images/icons/lock.svg';
@@ -15,7 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import s from './LoginForm.module.scss';
 
 const LoginForm = ({ localization }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     logIn,
     required,
@@ -28,7 +29,7 @@ const LoginForm = ({ localization }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(authSelectors.getLoading);
 
-  const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
+  // const goToPhonebookPage = () => navigate(routes.contacts, { replace: true });
 
   const validationsSchema = Yup.object().shape({
     email: Yup.string(emailPlaceholder).email(notValid).required(required),
@@ -38,10 +39,22 @@ const LoginForm = ({ localization }) => {
       .required(required),
   });
 
-  const handleSubmit = ({ email, password }) => {
+  const handleSubmit = async ({ email, password }) => {
     if (!email || !password) return;
-    dispatch(authOperations.login({ email, password }));
-    goToPhonebookPage();
+    const resultAction = await dispatch(
+      authOperations.login({ email, password }),
+    );
+    if (authOperations.login.fulfilled.match(resultAction)) {
+      const dataUser = resultAction.payload.user;
+      // goToPhonebookPage();
+      toast.success(`${dataUser.name}, you are successfully logged in!`);
+    } else {
+      if (resultAction.payload) {
+        toast.error(resultAction.payload);
+      } else {
+        toast.error(`Error! Login failed.`);
+      }
+    }
   };
 
   return (

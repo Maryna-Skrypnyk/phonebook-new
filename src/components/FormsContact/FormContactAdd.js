@@ -11,6 +11,7 @@ import ButtonIconWithContent from '../ButtonIconWithContent/ButtonIconWithConten
 import * as Yup from 'yup';
 import { makeToastWarn } from '../Notification/notification';
 import s from './FormsContact.module.scss';
+import { toast } from 'react-toastify';
 
 const FormContactAdd = ({ saveContact, localization }) => {
   const {
@@ -31,7 +32,18 @@ const FormContactAdd = ({ saveContact, localization }) => {
   const filter = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
 
-  const onHandleSubmit = ({ name, number }) => {
+  const onHandleSubmit = async ({ name, number }) => {
+    if (
+      contacts.find(contact => contact.name === name) &&
+      contacts.find(contact => contact.number === number)
+    ) {
+      makeToastWarn(
+        `${namePlaceholder} "${name}" / ${phoneNumber} "${number}" ${isContact}`,
+        'warn',
+      );
+      return;
+    }
+
     if (contacts.find(contact => contact.name === name)) {
       makeToastWarn(`${namePlaceholder} "${name}" ${isContact}`, 'warn');
       return;
@@ -42,13 +54,24 @@ const FormContactAdd = ({ saveContact, localization }) => {
       return;
     }
 
-    dispatch(contactsOperations.addContact({ name, number }));
-    // resetForm({ name: '', number: '' });
-    saveContact();
-
-    if (filter.length > 0) {
-      dispatch(changeFilter(''));
+    const resultAction = await dispatch(
+      contactsOperations.addContact({ name, number }),
+    );
+    if (contactsOperations.addContact.fulfilled.match(resultAction)) {
+      if (filter.length > 0) {
+        dispatch(changeFilter(''));
+      }
+      toast.success(
+        `You have successfully added contact "${name}: ${number}" to your list.`,
+      );
+    } else {
+      if (resultAction.payload) {
+        toast.error(resultAction.payload);
+      } else {
+        toast.error(`Error! Add contact failed.`);
+      }
     }
+    saveContact();
   };
 
   const validationSchema = Yup.object({

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import withLocalization from '../../hoc/withLocalization';
 import Spinner from '../../Spinner';
-import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from '../../../redux_thunk/auth';
 import ButtonIconWithContent from '../../ButtonIconWithContent';
 import s from './LogoutForm.module.scss';
@@ -17,9 +18,19 @@ const LogoutForm = ({ onClose, localization }) => {
     }
   };
 
-  const handleClickLogout = () => {
-    dispatch(authOperations.logout());
-    onClose();
+  const handleClickLogout = async () => {
+    const resultAction = await dispatch(authOperations.logout());
+    if (authOperations.logout.fulfilled.match(resultAction)) {
+      onClose();
+      toast.success(`You are successfully logged out!`);
+      // return resultAction;
+    } else {
+      if (resultAction.payload) {
+        toast.error(resultAction.payload);
+      } else {
+        toast.error('Error! Logout failed.');
+      }
+    }
   };
 
   return (

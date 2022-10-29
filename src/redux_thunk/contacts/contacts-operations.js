@@ -41,6 +41,11 @@ export const addContact = createAsyncThunk(
           'Missing header with authorization token.',
         );
       }
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue(
+          `Try add later or contact the support service. ${error.message}.`,
+        );
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -59,7 +64,9 @@ export const deleteContact = createAsyncThunk(
         );
       }
       if (error.response.status === 404) {
-        return thunkAPI.rejectWithValue('There is no such user collection.');
+        return thunkAPI.rejectWithValue(
+          `Try delete later or contact the support service. ${error.message}.`,
+        );
       }
       return thunkAPI.rejectWithValue(`Server Error! ${error.message}.`);
     }
@@ -82,6 +89,11 @@ export const updateContact = createAsyncThunk(
       if (error.response.status === 401) {
         return thunkAPI.rejectWithValue(
           'Missing header with authorization token.',
+        );
+      }
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue(
+          `Try update later or contact the support service. ${error.message}.`,
         );
       }
       return thunkAPI.rejectWithValue(error.message);

@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   contactsOperations,
   contactsSelectors,
@@ -7,7 +9,7 @@ import {
 import Spinner from '../Spinner';
 import ContactItem from './ContactItem';
 import withLocalization from '../hoc/withLocalization';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import s from './ContactList.module.scss';
 
 const ContactList = ({ localization }) => {
@@ -24,7 +26,23 @@ const ContactList = ({ localization }) => {
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
-  const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
+  // const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
+
+  const onDeleteContact = async id => {
+    const resultAction = await dispatch(contactsOperations.deleteContact(id));
+    if (contactsOperations.deleteContact.fulfilled.match(resultAction)) {
+      const dataContact = resultAction.payload;
+      toast.success(
+        `You are successfully delete contact "${dataContact.name}: ${dataContact.number}"!`,
+      );
+    } else {
+      if (resultAction.payload) {
+        toast.error(resultAction.payload);
+      } else {
+        toast.error(`Error! Delete contact failed.`);
+      }
+    }
+  };
 
   return (
     <>

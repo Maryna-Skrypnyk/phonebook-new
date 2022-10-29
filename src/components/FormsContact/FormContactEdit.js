@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import {
   contactsOperations,
   contactsSelectors,
 } from '../../redux_thunk/contacts';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+
 import withLocalization from '../hoc/withLocalization';
 import ButtonIconWithContent from '../ButtonIconWithContent/ButtonIconWithContent';
-import * as Yup from 'yup';
 import { makeToastWarn } from '../Notification/notification';
 import s from './FormsContact.module.scss';
+import { toast } from 'react-toastify';
 
 const FormContactEdit = ({ saveContact, localization, id }) => {
   const {
@@ -30,9 +32,18 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
   const currentContact = contacts.find(contact => contact.id === id);
   const dispatch = useDispatch();
 
-  const onHandleSubmit = ({ name, number }) => {
-    // const { name, number } = fieldsContact;
+  const onHandleSubmit = async ({ name, number }) => {
     const notCurrentContacts = contacts.filter(contact => contact.id !== id);
+    if (
+      notCurrentContacts.find(contact => contact.name === name) &&
+      notCurrentContacts.find(contact => contact.number === number)
+    ) {
+      makeToastWarn(
+        `${namePlaceholder} "${name}" ${phoneNumber} / "${number}" ${isContact}`,
+        'warn',
+      );
+      return;
+    }
     if (notCurrentContacts.find(contact => contact.name === name)) {
       makeToastWarn(`${namePlaceholder} "${name}" ${isContact}`, 'warn');
       return;
@@ -42,8 +53,20 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
       return;
     }
 
-    dispatch(contactsOperations.updateContact([id, { name, number }]));
-    // resetForm({ name: '', number: '' });
+    const resultAction = await dispatch(
+      contactsOperations.updateContact([id, { name, number }]),
+    );
+    if (contactsOperations.updateContact.fulfilled.match(resultAction)) {
+      toast.success(
+        `You have successfully updated contact "${currentContact.name}: ${currentContact.number}" to "${name}: ${number}"`,
+      );
+    } else {
+      if (resultAction.payload) {
+        toast.error(resultAction.payload);
+      } else {
+        toast.error(`Error! Update contact failed.`);
+      }
+    }
     saveContact();
   };
 
