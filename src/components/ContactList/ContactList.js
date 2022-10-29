@@ -9,6 +9,7 @@ import {
 import Spinner from '../Spinner';
 import ContactItem from './ContactItem';
 import withLocalization from '../hoc/withLocalization';
+import { ReactComponent as ImgPhone } from '../../assets/images/phone-book.svg';
 
 import s from './ContactList.module.scss';
 
@@ -48,25 +49,40 @@ const ContactList = ({ localization }) => {
     <>
       {isLoading && <Spinner />}
       {filterContacts.length === 0 && allContacts.length !== 0 && (
-        <motion.p
+        <motion.div
           className={s.notice}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ delay: 0.5 }}
         >
-          {noFilterContacts}
-        </motion.p>
+          <p>{noFilterContacts}</p>
+          <ImgPhone
+            alt="phonebookIcon"
+            style={{
+              marginTop: '10px',
+            }}
+            width="150"
+          />
+        </motion.div>
       )}
       {allContacts.length === 0 && (
-        <motion.p
+        <motion.div
           className={s.notice}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          // transition={{ delay: 1 }}
+          transition={{ delay: 0.5 }}
         >
-          {noContacts}
-        </motion.p>
+          <p>{noContacts}</p>
+          <ImgPhone
+            alt="phonebookIcon"
+            style={{
+              marginTop: '10px',
+            }}
+            width="150"
+          />
+        </motion.div>
       )}
 
       <ul className={s.contactList}>

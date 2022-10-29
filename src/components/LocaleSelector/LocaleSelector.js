@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import withLocalization from '../hoc/withLocalization';
-// import Button from '../Button';
 import ButtonIconWithContent from '../ButtonIconWithContent';
 import s from './LocaleSelector.module.scss';
 
@@ -15,7 +14,7 @@ const LocaleSelector = ({ localization }) => {
       exit={{ opacity: 0 }}
       transition={{ ease: 'easeOut', duration: 0.5 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
     >
       {locales.map(locale => (
         <ButtonIconWithContent

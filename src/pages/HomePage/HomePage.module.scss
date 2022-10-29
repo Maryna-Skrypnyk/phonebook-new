@@ -48,13 +48,13 @@
 }
 
 .imgHome {
-  width: 300px;
+  width: 200px;
 
   @media screen and (min-width: $tablet) {
-    width: 350px;
+    width: 250px;
   }
 
   @media screen and (min-width: $desktop) {
-    width: 400px;
+    width: 300px;
   }
 }

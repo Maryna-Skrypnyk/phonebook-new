@@ -97,7 +97,7 @@ const App = () => {
           </Routes>
         </Suspense>
 
-        <ToastContainer position="top-center" />
+        <ToastContainer position="top-left" />
       </LocalizationContext>
     </Layout>
   );

@@ -18,7 +18,7 @@ const ButtonIconWithContent = ({
       initial={{ scale: 0.5 }}
       transition={{ ease: 'easeOut', duration: 0.3 }}
       whileInView={{ scale: 1 }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
     >
       {children}
     </motion.button>

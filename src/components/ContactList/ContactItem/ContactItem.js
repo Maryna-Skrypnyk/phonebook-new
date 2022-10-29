@@ -29,7 +29,7 @@ const ContactItem = ({ onDeleteContact, id, name, number }) => {
       exit={{ x: 50, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
       viewport={{ once: false }}
-      // transition={{ ease: 'easeOut', duration: 0.3 }}
+      transition={{ ease: 'easeOut', duration: 0.3 }}
     >
       <p className={s.contact}>
         <span className={s.contactName}>{name}:</span> {number}
