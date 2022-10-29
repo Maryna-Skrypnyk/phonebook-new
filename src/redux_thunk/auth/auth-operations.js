@@ -50,7 +50,9 @@ export const login = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 400) {
-        return thunkAPI.rejectWithValue('Login error! Try login again.');
+        return thunkAPI.rejectWithValue(
+          'Invalid email or password. Try login again.',
+        );
       }
 
       if (error.response.status === 404) {
