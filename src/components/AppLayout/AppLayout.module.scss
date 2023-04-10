@@ -10,4 +10,10 @@
 
 .footer {
   padding: 20px 0;
+  position: sticky;
+  top: 100%;
+}
+
+.AppLayout {
+  min-height: 100vh;
 }

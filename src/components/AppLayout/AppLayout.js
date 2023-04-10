@@ -23,7 +23,7 @@ const AppLayout = () => {
   };
 
   return (
-    <div>
+    <div className={s.AppLayout}>
       <header>
         <Container>
           <div className={s.headerMenu}>
