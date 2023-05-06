@@ -1,3 +1,13 @@
+## App project "📒 Phonebook"
+
+:computer: In this project, I built mobile-first adaptive web-app with
+authorization, profile page, ability to add new contacts and existing contacts
+filter.
+
+⬇ [_Welcome!_](https://mis-myphonebook.netlify.app/) ⬇
+
+<a href="https://mis-myphonebook.netlify.app/"><img src="https://raw.githubusercontent.com/Maryna-Skrypnyk/goit-react-hw-08-phonebook/main/src/images/promo.gif" alt="Phonebook" border="0"></a>
+
 **Читати іншими мовами: [Русский](README.ru.md), [Українська](README.md).**
 
 # Критерії прийому
