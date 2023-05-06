@@ -8,7 +8,8 @@ filter.
 
 <!-- <a href="https://phonebook-new.netlify.app/"><img src="https://raw.githubusercontent.com/Maryna-Skrypnyk/goit-react-hw-08-phonebook/main/src/images/promo.gif" alt="Phonebook" border="0"></a> -->
 
-<a href="https://phonebook-new.netlify.app/"><iframe src="https://drive.google.com/file/d/1gRekD8hTpQAby2em1ZLH1sNT50j3SQDw/preview" width="640" height="480"></iframe></a>
+<!-- <a href="https://phonebook-new.netlify.app/"></a> -->
+<iframe src="https://drive.google.com/file/d/1gRekD8hTpQAby2em1ZLH1sNT50j3SQDw/preview" width="640" height="480"></iframe>
 
 **Читати іншими мовами: [Русский](README.ru.md), [Українська](README.md).**
 
