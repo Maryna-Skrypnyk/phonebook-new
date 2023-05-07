@@ -6,7 +6,7 @@ filter.
 
 ⬇ [_Welcome!_](https://phonebook-new.netlify.app/) ⬇
 
-<!-- <a href="https://phonebook-new.netlify.app/"><video src="https://raw.githubusercontent.com/Maryna-Skrypnyk/phonebook-new/main/src/images/promo.webm" autoplay border="0"></video></a> -->
+<!-- <a href="https://phonebook-new.netlify.app/"><img src="https://raw.githubusercontent.com/Maryna-Skrypnyk/phonebook-new/main/src/images/promo.gif" autoplay border="0"></a> -->
 
 **Читати іншими мовами: [Русский](README.ru.md), [Українська](README.md).**
 
