@@ -14,7 +14,12 @@ import { ReactComponent as ImgPhone } from '../../assets/images/phone-book.svg';
 import s from './ContactList.module.scss';
 
 const ContactList = ({ localization }) => {
-  const { noContacts, noFilterContacts } = localization.localizedContent;
+  const {
+    noContacts,
+    noFilterContacts,
+    successDeleteContact,
+    errorDeleteContact,
+  } = localization.localizedContent;
   const dispatch = useDispatch();
 
   const allContacts = useSelector(contactsSelectors.getContacts);
@@ -34,13 +39,13 @@ const ContactList = ({ localization }) => {
     if (contactsOperations.deleteContact.fulfilled.match(resultAction)) {
       const dataContact = resultAction.payload;
       toast.success(
-        `You are successfully delete contact "${dataContact.name}: ${dataContact.number}"!`,
+        `${successDeleteContact} "${dataContact.name}: ${dataContact.number}"!`,
       );
     } else {
       if (resultAction.payload) {
         toast.error(resultAction.payload);
       } else {
-        toast.error(`Error! Delete contact failed.`);
+        toast.error(`${errorDeleteContact}`);
       }
     }
   };

@@ -41,5 +41,12 @@
   "minCharacterNumber": "at least 8 character",
   "maxCharacterNumber": "must be 18 characters or less",
   "notValid": "not valid",
-  "notConfirmPassword": "passwords are not the same"
+  "notConfirmPassword": "passwords are not the same",
+
+  "successAddContact": "You have successfully added contact to your list -",
+  "errorAddContact": "Error! Add contact failed",
+  "successUpdateContact": "You have successfully updated contact",
+  "errorUpdateContact": "Error! Update contact failed",
+  "successDeleteContact": "You have successfully deleted contact",
+  "errorDeleteContact": "Error! Delete contact failed"
 }

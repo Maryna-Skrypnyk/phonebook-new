@@ -26,6 +26,8 @@ const FormContactAdd = ({ saveContact, localization }) => {
     notValid,
     minCharacterNumber,
     maxCharacterNumber,
+    successAddContact,
+    errorAddContact,
   } = localization.localizedContent;
 
   const contacts = useSelector(contactsSelectors.getContacts);
@@ -61,14 +63,12 @@ const FormContactAdd = ({ saveContact, localization }) => {
       if (filter.length > 0) {
         dispatch(changeFilter(''));
       }
-      toast.success(
-        `You have successfully added contact "${name}: ${number}" to your list.`,
-      );
+      toast.success(`${successAddContact} "${name}: ${number}".`);
     } else {
       if (resultAction.payload) {
         toast.error(resultAction.payload);
       } else {
-        toast.error(`Error! Add contact failed.`);
+        toast.error(`${errorAddContact}`);
       }
     }
     saveContact();

@@ -26,6 +26,8 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
     notValid,
     minCharacterNumber,
     maxCharacterNumber,
+    successUpdateContact,
+    errorUpdateContact,
   } = localization.localizedContent;
 
   const contacts = useSelector(contactsSelectors.getContacts);
@@ -58,13 +60,13 @@ const FormContactEdit = ({ saveContact, localization, id }) => {
     );
     if (contactsOperations.updateContact.fulfilled.match(resultAction)) {
       toast.success(
-        `You have successfully updated contact "${currentContact.name}: ${currentContact.number}" to "${name}: ${number}"`,
+        `${successUpdateContact} "${currentContact.name}: ${currentContact.number}" -> "${name}: ${number}"`,
       );
     } else {
       if (resultAction.payload) {
         toast.error(resultAction.payload);
       } else {
-        toast.error(`Error! Update contact failed.`);
+        toast.error(`${errorUpdateContact}`);
       }
     }
     saveContact();

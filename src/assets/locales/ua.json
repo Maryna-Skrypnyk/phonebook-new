@@ -41,5 +41,12 @@
   "minCharacterNumber": "не менше 8 символів",
   "maxCharacterNumber": "не більше 18 символів",
   "notValid": "не валідне значення",
-  "notConfirmPassword": "пароль не підтверджено"
+  "notConfirmPassword": "пароль не підтверджено",
+
+  "successAddContact": "Ви успішно додали контакт до вашого списку -",
+  "errorAddContact": "Помилка додавання контакту",
+  "successUpdateContact": "Ви успішно оновили контакт",
+  "errorUpdateContact": "Помилка оновлення контакту",
+  "successDeleteContact": "Ви успішно видалили контакт",
+  "errorDeleteContact": "Помилка видалення контакту"
 }
