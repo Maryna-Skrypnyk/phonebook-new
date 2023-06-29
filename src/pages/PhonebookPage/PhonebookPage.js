@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Title from '../../components/Title';
 import withLocalization from '../../components/hoc/withLocalization';
 import PageWrapper from '../../components/PageWrapper';
@@ -11,11 +12,14 @@ import ButtonIconWithContent from '../../components/ButtonIconWithContent';
 import ButtonIcon from '../../components/ButtonIcon';
 import { ReactComponent as AddIcon } from '../../assets/images/icons/add.svg';
 import { ReactComponent as CloseIcon } from '../../assets/images/icons/close.svg';
+import { contactsSelectors } from '../../redux_thunk/contacts';
 
 const PhonebookPage = ({ localization }) => {
   const { primaryTitle, secondaryTitle, contentBtnAdd } =
     localization.localizedContent;
   const [showModal, setShowModal] = useState(false);
+
+  const allContacts = useSelector(contactsSelectors.getContacts);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -46,7 +50,10 @@ const PhonebookPage = ({ localization }) => {
           </Modal>
         )}
       </AnimatePresence>
-      <Title secondaryTitle={secondaryTitle} titleClass="secondaryTitle" />
+      {allContacts.length !== 0 && (
+        <Title secondaryTitle={secondaryTitle} titleClass="secondaryTitle" />
+      )}
+
       <Filter />
       <ContactList />
     </PageWrapper>
